@@ -1,0 +1,26 @@
+---
+id: "96"
+title: "Пресса о фестивале"
+image: "http://shamir.lv/wp-content/uploads/2016/03/PressCover-1320x742.jpg"
+tags: ['Фестиваль еврейской культуры 5770',]
+date: 2011-03-10
+oldUrl: http://shamir.lv/2011/03/10/%d0%bf%d1%80%d0%b5%d1%81%d1%81%d0%b0-%d0%be-%d1%84%d0%b5%d1%81%d1%82%d0%b8%d0%b2%d0%b0%d0%bb%d0%b5/
+---
+
+[Возрождая прошлое](http://shamir.lv/images/Pages%20from%20baltic_outlook_2(1).pdf)
+
+[В музей при жизни](http://shamir.lv/goto/http://www.intelligent.lv/ru/26616/15349_26616.html)
+
+[Неделя еврейской музыки — и даже танцы!](http://shamir.lv/goto/http://www.folkdance.lv/pasakumi/ebreju-muzikas-festivals-lidz-15-septembrim-ari-danci/)
+
+[В сентябре в Риге пройдет Фестиваль еврейской музыки](http://shamir.lv/goto/http://www.tvnet.lv/muzika/article.php?id=529348)
+
+[Стирая белые пятна](http://shamir.lv/goto/http://www2.la.lv/lat/latvijas_avize/la_pielikumi/kulturzimes/?doc=62748)
+
+[Неделя еврейской музыки сулит разнообразие — от канторов до клезмеров](http://shamir.lv/goto/http://www.diena.lv/lat/izklaide/muzika/klasiska_muzika/ebreju-muzikas-nedela-sola-lkrasnu-muzikas-daudzveidibu)
+
+[Пресс-конференция открытия Фестиваля](http://shamir.lv/goto/http://www.leta.lv/foto/sources/leta/album/B312435C-79CE-498F-AB64-AAA1161A04A8/)
+
+[Счастливого, сладкого и веселого 5770 года!](http://shamir.lv/goto/http://www2.la.lv/lat/latvijas_avize/jaunakaja_numura/nedela.kabata/?doc=62673)
+
+[Канторы и клезмеры](http://shamir.lv/goto/http://www.diena.lv/lat/laikraksts/kultura/kantori-un-klezmeri) 
