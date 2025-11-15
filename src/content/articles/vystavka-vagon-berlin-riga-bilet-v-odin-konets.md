@@ -15,7 +15,7 @@ oldUrl: http://shamir.lv/2016/04/17/berlinriga/
 
 Международной группой исследователей из Латвии, Германии и Австрии были собраны и восстановленны списки пассажиров составов, привозивших западных евреев в Латвию, а также по возможности исследованны и восстановленны их судьбы, созданны базы данных. Студией «Futureperfect» был разработан уникальный дизайн — лаконичный, но от этого ещё мощнее взывающий к посетителю. Над созданием выставки работали около 150 человек и мы надеемся, что она не оставит вас безразличными.
 
-![eacea-logo](http://shamir.lv/newshamir/wp-content/uploads/2015/06/eacea-logo-300x188.gif)![cc_log3](http://shamir.lv/newshamir/wp-content/uploads/2016/05/cc_log3-227x102.gif)
+![eacea-logo](http://shamir.lv/wp-content/uploads/2015/06/eacea-logo-300x188.gif)![cc_log3](http://shamir.lv/wp-content/uploads/2016/05/cc_log3-227x102.gif)
 
 [![](http://shamir.lv/wp-content/uploads/2016/05/5-5-470x313.jpg)](http://shamir.lv/wp-content/uploads/2016/05/5-5.jpg)
 

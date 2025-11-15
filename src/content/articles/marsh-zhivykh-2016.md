@@ -11,4 +11,4 @@ Oбщество «Шамир» и музей Рижского гетто и Хо
 
 Facebook event: [https://www.facebook.com/events/545798345593250/](http://shamir.lv/goto/https://www.facebook.com/events/545798345593250/)
 
-![dzivo](http://shamir.lv/newshamir/wp-content/uploads/2016/06/dzivo-300x200.jpg) 
+![dzivo](http://shamir.lv/wp-content/uploads/2016/06/dzivo-300x200.jpg) 

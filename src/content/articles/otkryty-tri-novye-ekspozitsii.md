@@ -51,6 +51,6 @@ oldUrl: http://shamir.lv/2016/05/26/%d0%be%d1%82%d0%ba%d1%80%d1%8b%d1%82%d1%8b-%
 
 [![](http://shamir.lv/wp-content/uploads/2016/05/sigh-470x313.jpg)](http://shamir.lv/wp-content/uploads/2016/05/sigh.jpg)
 
-![eacea_logo_en_0](http://shamir.lv/newshamir/wp-content/uploads/2016/05/eacea_logo_en_0.png)
+![eacea_logo_en_0](http://shamir.lv/wp-content/uploads/2016/05/eacea_logo_en_0.png)
 
-![cc_log3](http://shamir.lv/newshamir/wp-content/uploads/2016/05/cc_log3.gif) 
+![cc_log3](http://shamir.lv/wp-content/uploads/2016/05/cc_log3.gif) 

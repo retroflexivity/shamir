@@ -31,10 +31,28 @@ export function HomePage({ articles }: HomePageProps) {
   const normalize = (text: string) => text.toLowerCase().replace(/ё/g, "е");
 
   const filtered = useMemo(() => {
-    return articles.filter(article => {
+    const filteredArticles = articles.filter(article => {
       const matchText = normalize(article.title).includes(normalize(searchValue));
-      const matchTag = selectedTags.size === 0 || (article.tags||[]).some(tag => selectedTags.has(tag));
+      // const matchTag = selectedTags.size === 0 || (article.tags||[]).some(tag => selectedTags.has(tag));
+      const matchTag = selectedTags.size === 0 || [...selectedTags].every(tag => (article.tags||[]).includes(tag));
       return matchText && matchTag;
+    });
+
+    // Sort by date (newest first)
+    return filteredArticles.sort((a, b) => {
+      const getDateValue = (dt: Date | string | undefined): number => {
+        if (!dt) return 0;
+        if (typeof dt === "string") {
+          const d = new Date(dt);
+          return isNaN(d.getTime()) ? 0 : d.getTime();
+        }
+        if (dt instanceof Date) return dt.getTime();
+        return 0;
+      };
+
+      const dateA = getDateValue(a.date);
+      const dateB = getDateValue(b.date);
+      return dateB - dateA; // Descending order (newest first)
     });
   }, [articles, searchValue, selectedTags]);
 
@@ -108,7 +126,6 @@ export function HomePage({ articles }: HomePageProps) {
                   : 'text-gray-900 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
                 )
               }
-              style={{ opacity: selectedTags.size === 0 || selectedTags.has(tag) ? 1 : 0.5 }}
               onClick={() => toggleTag(tag)}
             >
               {tag}
@@ -126,11 +143,11 @@ export function HomePage({ articles }: HomePageProps) {
             <Card className="article-card group relative h-72 sm:h-72 md:h-80 lg:h-96 overflow-hidden bg-white dark:bg-gray-800 hover:shadow-lg transition p-0 flex cursor-pointer">
               {article.image && (
                 <div className="absolute inset-0">
-                  <img src={article.image} alt={article.title} className="w-full h-full object-cover object-center transition scale-105 brightness-[1] dark:brightness-[0.35] grayscale group-hover:grayscale-0 group-hover:brightness-100 dark:group-hover:brightness-75" />
+                  <img src={article.image} alt={article.title} className="w-full h-full object-cover object-center transition scale-105 brightness-[1] dark:brightness-[0.35] grayscale group-hover:grayscale-0 group-hover:brightness-100 dark:group-hover:brightness-[0.6]" />
                 </div>
               )}
               <div className="relative z-10 w-full h-full flex flex-col justify-end p-5">
-                <h2 className="font-bold text-gray-900 dark:text-white text-xl mb-1 line-clamp-6 uppercase break-words">{article.title}</h2>
+                <h2 className="font-bold text-gray-900 dark:text-white outline-solid drop-shadow-[0_2px_2px_rgba(0,0,0,1)] text-xl mb-1 line-clamp-6 uppercase break-words">{article.title}</h2>
                 <div className="mb-2 flex flex-wrap gap-1 text-gray-900 dark:text-white">
                   {
                     // (article.tags||[]).map(t =>

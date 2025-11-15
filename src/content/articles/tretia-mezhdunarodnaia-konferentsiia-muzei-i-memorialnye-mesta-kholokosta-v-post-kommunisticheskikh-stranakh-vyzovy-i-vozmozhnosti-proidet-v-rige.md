@@ -2,7 +2,7 @@
 id: "30"
 title: "Третья Международная конференция «Музеи и мемориальные места Холокоста в пост-коммунистических странах – вызовы и возможности» пройдет в Риге"
 image: "http://shamir.lv/wp-content/uploads/2016/05/2016.05.16.Holokaust_367-1320x742.jpg"
-tags: ['Uncategorized', 'Конференции']
+tags: ['Конференции']
 date: 2015-02-14
 oldUrl: http://shamir.lv/2015/02/14/save-the-date-for-the-iii-international-conference-holocaust-museums-and-memorial-places-in-post-communist-countries-challenges-and-opportunities/
 ---

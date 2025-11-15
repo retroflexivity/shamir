@@ -49,4 +49,4 @@ oldUrl: http://shamir.lv/2020/02/03/%d0%bf%d0%b0%d0%bc%d1%8f%d1%82%d1%8c-%d0%b6%
 
 *Рига — Краков — Аушвитц-Биркенау*
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2020/02/YONI-RYKNER-20-212.jpg) ![](http://shamir.lv/newshamir/wp-content/uploads/2020/02/YONI-RYKNER-11.jpg) ![](http://shamir.lv/newshamir/wp-content/uploads/2020/02/YONI-RYKNER-20-115.jpg) 
+![](http://shamir.lv/wp-content/uploads/2020/02/YONI-RYKNER-20-212.jpg) ![](http://shamir.lv/wp-content/uploads/2020/02/YONI-RYKNER-11.jpg) ![](http://shamir.lv/wp-content/uploads/2020/02/YONI-RYKNER-20-115.jpg) 

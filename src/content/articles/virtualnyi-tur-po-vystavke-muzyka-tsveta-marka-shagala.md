@@ -11,6 +11,6 @@ oldUrl: http://shamir.lv/2020/12/22/%d0%b2%d0%b8%d1%80%d1%82%d1%83%d0%b0%d0%bb%d
 
 Создание виртуального тура поддержал департамент культуры и спорта Рижской Думы, а также LNK Charity, LG Latvia. Материалы для выставки предоставили государственный музей искусств, фонд Бориса Лурье и частные коллекционеры.
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2020/12/sagal1.jpg)
+![](http://shamir.lv/wp-content/uploads/2020/12/sagal1.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2020/12/sagal-3.jpg) 
+![](http://shamir.lv/wp-content/uploads/2020/12/sagal-3.jpg) 

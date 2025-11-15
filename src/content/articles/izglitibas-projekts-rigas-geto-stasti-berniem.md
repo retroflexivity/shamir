@@ -21,4 +21,4 @@ Holokausts ir viena no sāpīgākajām mācībām, ko devis pasaulei 20. gs. To
 
 ## Vairāk informācijas par projektu: Talr.: 67791784 E-pasts: project@shamir.lv
 
-![vkkf-logo](http://shamir.lv/newshamir/wp-content/uploads/2016/05/VKKF-logo-300x173.jpg) 
+![vkkf-logo](http://shamir.lv/wp-content/uploads/2016/05/VKKF-logo-300x173.jpg) 

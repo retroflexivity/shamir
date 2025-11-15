@@ -25,7 +25,7 @@ export function ArticlePage({ article }: ArticlePageProps) {
   }, [article.body]);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-12 py-8">
+    <div className="mx-auto max-w-6xl px-6 sm:px-16 py-8">
       <div className="mb-6 hidden sm:block">
         <a
           href="/"

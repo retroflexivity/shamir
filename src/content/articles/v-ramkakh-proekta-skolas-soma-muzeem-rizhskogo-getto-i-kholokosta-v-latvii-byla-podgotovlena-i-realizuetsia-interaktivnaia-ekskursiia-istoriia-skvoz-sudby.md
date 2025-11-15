@@ -12,18 +12,18 @@ oldUrl: http://shamir.lv/2019/12/12/%d0%b2-%d1%80%d0%b0%d0%bc%d0%ba%d0%b0%d1%85-
  Интерактивная экскурсия приобретает индивидуальный характер и помогает участнику лично прочувствовать судьбу отдельного человека. Эти ассоциации усиливают впечатление об ужасных событиях, произошедших во времена Холокоста.  
  Проект был организован при финансовой поддержке Министерства Культуры Латвийской Республики.
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/79091513_2567100293405569_4768665277799858176_n.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/79091513_2567100293405569_4768665277799858176_n.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/IMG-20191129-WA0016.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/IMG-20191129-WA0016.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/20191203_145950.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/20191203_145950.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/IMG-20191129-WA0007.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/IMG-20191129-WA0007.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/20191203_151951-e1576165353651.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/20191203_151951-e1576165353651.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/IMG-20191129-WA0006-1.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/IMG-20191129-WA0006-1.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/20191203_151005-e1576165370362.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/20191203_151005-e1576165370362.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/Skolas_soma_LV100-krasains.jpg) 
+![](http://shamir.lv/wp-content/uploads/2019/12/Skolas_soma_LV100-krasains.jpg) 

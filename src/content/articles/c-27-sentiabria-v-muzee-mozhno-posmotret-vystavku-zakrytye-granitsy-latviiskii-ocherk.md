@@ -15,10 +15,10 @@ oldUrl: http://shamir.lv/2020/09/15/%d0%b5%d0%b2%d1%80%d0%b5%d0%b9%d1%81%d0%ba%d
  Среди других экспонатов выставки «Закрытые границы. Латвийский очерк» – документы, фотографии и видеосвидетельства, предоставленные Российским государственным архивом социально-политической истории, Архивом Внешней политики Российской федерации, Винерской библиотекой в Лондоне, Библиотекой и музеем Франклина Рузвельта в Национальном парке США, музеем Яд ва-Шем в Израиле и Мемориальным Музеем Холокоста в Вашингтоне.  
  Выставка в Риге осуществлена при финансовой поддержке фонда Uniting History, фонда LNK Charity и Министерства Культуры Латвии.
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2020/11/IMG_20201001_174652.jpg)
+![](http://shamir.lv/wp-content/uploads/2020/11/IMG_20201001_174652.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2020/11/IMG_20201001_174634.jpg)
+![](http://shamir.lv/wp-content/uploads/2020/11/IMG_20201001_174634.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2020/11/IMG_20201001_174240.jpg)
+![](http://shamir.lv/wp-content/uploads/2020/11/IMG_20201001_174240.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2020/11/IMG_20201001_174216.jpg) 
+![](http://shamir.lv/wp-content/uploads/2020/11/IMG_20201001_174216.jpg) 

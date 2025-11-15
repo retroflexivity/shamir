@@ -14,4 +14,4 @@ oldUrl: http://shamir.lv/2020/08/14/%d0%bf%d1%80%d0%b8%d0%b3%d0%bb%d0%b0%d1%88%d
 
 Выставка организована при финансовой поддержке Рижского самоуправления un LNK Charity fund. Выставку в Риге технически поддержали компания «LG», Латвийский Национальный художественный музей, Фонд Бориса Лурье.
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2020/08/shagal-3-site-1.jpg) 
+![](http://shamir.lv/wp-content/uploads/2020/08/shagal-3-site-1.jpg) 

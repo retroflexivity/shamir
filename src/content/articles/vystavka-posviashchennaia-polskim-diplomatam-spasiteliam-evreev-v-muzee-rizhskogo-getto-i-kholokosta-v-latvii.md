@@ -19,4 +19,4 @@ oldUrl: http://shamir.lv/2021/09/02/%d0%b2%d1%8b%d1%81%d1%82%d0%b0%d0%b2%d0%ba%d
 
 Выставку «Паспорта жизни» подготовил институт Пилецкого в сотрудничестве с посольствами Республики Польша в Берне и Риге, а также с музеем Рижского гетто и Холокоста в Латвии.
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/PL-banner-web.jpg) 
+![](http://shamir.lv/wp-content/uploads/2021/09/PL-banner-web.jpg) 

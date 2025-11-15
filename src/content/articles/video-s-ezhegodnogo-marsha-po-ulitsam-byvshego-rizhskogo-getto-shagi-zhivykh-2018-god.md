@@ -11,4 +11,4 @@ oldUrl: http://shamir.lv/2018/07/27/%d0%b2%d0%b8%d0%b4%d0%b5%d0%be-%d1%81-%d0%b5
 
 Мы благодарим всех, кто принял участие!
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2018/07/2018.07.04.DzGaj_123-300x199.jpg) 
+![](http://shamir.lv/wp-content/uploads/2018/07/2018.07.04.DzGaj_123-300x199.jpg) 

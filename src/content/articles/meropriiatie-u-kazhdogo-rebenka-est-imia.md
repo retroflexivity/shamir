@@ -11,7 +11,7 @@ oldUrl: http://shamir.lv/2016/10/13/%d0%bc%d0%b5%d1%80%d0%be%d0%bf%d1%80%d0%b8%d
 
 Общество «Шамир» и музей Рижского гетто и Холокоста в Латвии выражает благодарность всем, кто принял участие в этом памятном мероприятии. Мы выражаем личную благодарность депутату Рижской думы Ирине Винник, а также представителям посольств Испании, России, Германии и США.
 
-![las](http://shamir.lv/newshamir/wp-content/uploads/2016/10/las-300x150.jpg)
+![las](http://shamir.lv/wp-content/uploads/2016/10/las-300x150.jpg)
 
 [![](http://shamir.lv/wp-content/uploads/2016/10/IMG_20161020_122009-470x313.jpg)](http://shamir.lv/wp-content/uploads/2016/10/IMG_20161020_122009.jpg)
 

@@ -17,24 +17,24 @@ oldUrl: http://shamir.lv/2021/09/02/%d0%bf%d1%80%d0%b5%d0%b7%d0%b5%d0%bd%d1%82%d
 
 Выставка Zachor будет доступна для посещения до 15 сентября в Ратуше города Бремен. Вход бесплатный.
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG_20210824_170501.jpg)
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG_20210824_170501.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG_20210824_170537.jpg)
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG_20210824_170537.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG_20210824_145915.jpg)
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG_20210824_145915.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG_20210824_150144.jpg)
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG_20210824_150144.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG_20210824_150415.jpg)
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG_20210824_150415.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG_20210824_150541.jpg)
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG_20210824_150541.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG_20210824_151531.jpg)
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG_20210824_151531.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG_20210824_163621.jpg)
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG_20210824_163621.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG_20210824_164011.jpg)
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG_20210824_164011.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG-20210831-WA0009.jpg)
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG-20210831-WA0009.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2021/09/IMG-20210831-WA0013.jpg) 
+![](http://shamir.lv/wp-content/uploads/2021/09/IMG-20210831-WA0013.jpg) 

@@ -21,8 +21,8 @@ oldUrl: http://shamir.lv/2019/07/16/%d0%be%d0%b1%d0%bd%d0%be%d0%b2%d0%bb%d0%b5%d
   [Испанский](http://shamir.lv/goto/https://drive.google.com/file/d/1y-IJbFJPWZXvFi26LjdRmmifljqLZN1X/view?usp=sharing)   
  [Турецкий](http://shamir.lv/goto/https://drive.google.com/file/d/1ajtNcvlRRo2EIzw_derJkTZ1IfqvR5bQ/view?usp=sharing)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/07/Мостович.jpg)  
- ![](http://shamir.lv/newshamir/wp-content/uploads/2019/07/Кузьковский2.jpg)  
- ![](http://shamir.lv/newshamir/wp-content/uploads/2019/07/Кузьковский-1.jpg)  
- ![](http://shamir.lv/newshamir/wp-content/uploads/2019/07/Бондарь.jpg)  
- ![](http://shamir.lv/newshamir/wp-content/uploads/2019/07/Липке.jpg) 
+![](http://shamir.lv/wp-content/uploads/2019/07/Мостович.jpg)  
+ ![](http://shamir.lv/wp-content/uploads/2019/07/Кузьковский2.jpg)  
+ ![](http://shamir.lv/wp-content/uploads/2019/07/Кузьковский-1.jpg)  
+ ![](http://shamir.lv/wp-content/uploads/2019/07/Бондарь.jpg)  
+ ![](http://shamir.lv/wp-content/uploads/2019/07/Липке.jpg) 

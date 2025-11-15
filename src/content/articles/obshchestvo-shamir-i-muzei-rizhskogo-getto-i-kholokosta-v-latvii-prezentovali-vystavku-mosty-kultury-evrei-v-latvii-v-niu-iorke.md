@@ -14,12 +14,12 @@ oldUrl: http://shamir.lv/2019/12/16/%d0%be%d0%b1%d1%89%d0%b5%d1%81%d1%82%d0%b2%d
  Через этот проект организаторы надеются сделать историю Латвийских евреев более доступной и известной по всему миру.  
  Выставку поддержали: Государственный Фонд Культурного Капитала (VKKF), Рижская Дума, Фонд наследия Лиепайских евреев и LNK Charity Fund. Выставка в Нью Йорке была организована при поддержке организации Latvian Jewish survivors of Holocaust.
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/20191117_105354.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/20191117_105354.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/20191117_105332.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/20191117_105332.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/20191117_105237.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/20191117_105237.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/20191117_105404.jpg)
+![](http://shamir.lv/wp-content/uploads/2019/12/20191117_105404.jpg)
 
-![](http://shamir.lv/newshamir/wp-content/uploads/2019/12/20191117_122011-e1576492819590.jpg) 
+![](http://shamir.lv/wp-content/uploads/2019/12/20191117_122011-e1576492819590.jpg) 
