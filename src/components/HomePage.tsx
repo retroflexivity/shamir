@@ -22,6 +22,13 @@ const projectLinks: {href: string, label: string}[] = [
   { href: "http://shamir.lv/eitc-2/", label: "Центр толерантности" },
 ];
 
+const priorityTags : Set<string> = new Set([
+  'Деятельность',
+  'Проекты',
+  'Исследования',
+  'Выставки'
+])
+
 export function HomePage({ articles }: HomePageProps) {
   const allTags = useMemo(() =>
     Array.from(new Set(articles.flatMap(a => a.tags || [])))
@@ -29,6 +36,62 @@ export function HomePage({ articles }: HomePageProps) {
   const [searchValue, setSearchValue] = useState("");
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
   const normalize = (text: string) => text.toLowerCase().replace(/ё/g, "е");
+
+  // Check if a tag is compatible with currently selected tags
+  // A tag is compatible if there exists at least one article that has both the tag and all selected tags
+  const isTagCompatible = useMemo(() => {
+    const compatibilityMap = new Map<string, boolean>();
+    
+    if (selectedTags.size === 0) {
+      // If no tags are selected, all tags are compatible
+      allTags.forEach(tag => compatibilityMap.set(tag, true));
+    } else {
+      allTags.forEach(tag => {
+        // Check if there's at least one article that has both this tag and all selected tags
+        const isCompatible = articles.some(article => {
+          const articleTags = article.tags || [];
+          return articleTags.includes(tag) && 
+                 [...selectedTags].every(selectedTag => articleTags.includes(selectedTag));
+        });
+        compatibilityMap.set(tag, isCompatible);
+      });
+    }
+    
+    return (tag: string) => compatibilityMap.get(tag) ?? false;
+  }, [articles, selectedTags, allTags]);
+
+  // Count articles per tag
+  const tagArticleCounts = useMemo(() => {
+    return new Map(allTags.map(tag => [tag, articles.reduce((n, a) => ((a.tags || []).includes(tag) ? n+1 : n), 0)]))
+  }, [articles, allTags]);
+
+  const preSortedTags = allTags.toSorted(
+    (a: string, b: string) => (tagArticleCounts.get(b) || 0)
+                            - (tagArticleCounts.get(a) || 0)
+                            + (priorityTags.has(b) ? 1000 : 0)
+                            + (priorityTags.has(a) ? -1000 : 0)
+    
+  )
+
+  // Sort tags: selected first, compatible second, incompatible last
+  // Within each group, sort by number of associated articles (descending)
+  const sortedTags = useMemo(() => {
+    const selected: string[] = [];
+    const compatible: string[] = [];
+    const incompatible: string[] = [];
+    
+    preSortedTags.forEach(tag => {
+      if (selectedTags.has(tag)) {
+        selected.push(tag);
+      } else if (isTagCompatible(tag)) {
+        compatible.push(tag);
+      } else {
+        incompatible.push(tag);
+      }
+    });
+    
+    return [...selected, ...compatible, ...incompatible];
+  }, [allTags, selectedTags, isTagCompatible, tagArticleCounts]);
 
   const filtered = useMemo(() => {
     const filteredArticles = articles.filter(article => {
@@ -58,7 +121,7 @@ export function HomePage({ articles }: HomePageProps) {
 
   function toggleTag(tag: string) {
     setSelectedTags((prev) => {
-      const next = new Set(prev);
+      const next = new Set((isTagCompatible(tag)) ? prev : null)
       if (next.has(tag)) next.delete(tag); else next.add(tag);
       return next;
     });
@@ -76,7 +139,7 @@ export function HomePage({ articles }: HomePageProps) {
   }
 
   return (
-    <div className="text-gray-200 mx-auto text-gray-900 dark:text-gray-200">
+    <div className="mx-auto text-gray-900 dark:text-gray-200">
       <div id="logo" className="flex justify-center items-center mt-20 mb-20">
         <img
           src="src/assets/logo.svg"
@@ -86,7 +149,7 @@ export function HomePage({ articles }: HomePageProps) {
       </div>
       <div id="about" className="text-lg flex flex-col items-center gap-2 mb-10">
         <p className="mb-5">
-          Больше двадцати лет мы сохраняем и исследуем память об истории евреев Латвии и трагедии Холокоста.
+          Больше двадцати лет мы сохраняем и исследуем память об истории евреев Латвии.
         </p>
         <div className="text-xl grid grid-cols-1 sm:grid-cols-3 gap-10 px-4 max-w-100">
           {projectLinks.map((link) => (
@@ -115,22 +178,30 @@ export function HomePage({ articles }: HomePageProps) {
           id="tag-list"
           className="flex flex-nowrap overflow-x-auto whitespace-nowrap gap-x-2 px-1 w-full scrollbar-thin scrollbar-thumb-gray-300 no-scrollbar"
         >
-          {allTags.map(tag => (
-            <Badge
-              key={tag}
-              data-tag={tag}
-              className={
-                'text-md px-3 py-1 bordered cursor-pointer rounded-full transition ' +
-                (selectedTags.has(tag)
-                  ? 'bg-gray-600 dark:bg-gray-600 text-white dark:text-white'
-                  : 'text-gray-900 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
-                )
-              }
-              onClick={() => toggleTag(tag)}
-            >
-              {tag}
-            </Badge>
-          ))}
+          {sortedTags.map(tag => {
+            const isSelected = selectedTags.has(tag);
+            const isCompatible = isTagCompatible(tag);
+            const isIncompatible = !isSelected && !isCompatible;
+            
+            return (
+              <Badge
+                key={tag}
+                data-tag={tag}
+                className={
+                  'px-3 py-1 cursor-pointer rounded-full transition ' +
+                  (isSelected
+                    ? 'bg-gray-600 dark:bg-gray-200 text-gray-200 dark:text-gray-600'
+                    : isIncompatible
+                    ? 'text-gray-900 dark:text-gray-200 hover:bg-gray-600 hover:text-gray-200 dark:hover:bg-gray-200 dark:hover:text-gray-600 opacity-40'
+                    : 'text-gray-900 dark:text-gray-200 hover:bg-gray-600 hover:text-gray-200 dark:hover:bg-gray-200 dark:hover:text-gray-600'
+                  )
+                }
+                onClick={() => toggleTag(tag)}
+              >
+                {tag}
+              </Badge>
+            );
+          })}
         </div>
       </div>
       <div id="article-grid" className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
