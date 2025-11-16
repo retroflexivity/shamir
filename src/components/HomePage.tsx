@@ -205,7 +205,7 @@ export function HomePage({ articles }: HomePageProps) {
           })}
         </div>
       </div>
-      <div id="article-grid" className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
+      <div id="article-grid" className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {filtered.map((article, i) => (
           <a
             key={article.title + i}
