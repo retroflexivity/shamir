@@ -27,7 +27,7 @@ const { article } = Astro.props;
   <head>
     <SiteHead title={article.title} />
   </head>
-  <body class="bg-lightbg dark:bg-darkbg text-gray-900 dark:text-gray-200 transition-colors">
+  <body class="bg-lightbg dark:bg-darkbg text-lightfg dark:text-darkfg transition-colors">
     <ArticlePage client:load article={article} />
   </body>
 </html>

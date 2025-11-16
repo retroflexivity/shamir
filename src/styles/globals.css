@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 /* Inter (Sans-serif) - Variable Font */
+
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/Inter/Inter.ttf') format('truetype');
@@ -64,22 +65,13 @@
   padding-right: 1rem;
 }
 
-.prose table th,
-.prose table td {
-  @apply border-gray-300 dark:border-gray-600;
-}
-
 @layer components {
   .bordered {
-    @apply border-2 border-gray-900 dark:border-gray-200
+    @apply border-2 border-lightfg dark:border-darkfg
   }
 
   .btn {
-    @apply inline-flex items-center justify-center rounded-none font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none bg-transparent text-gray-900 dark:text-gray-200 border-2 border-gray-900 dark:border-gray-200 px-4 py-2 text-sm hover:underline;
-  }
-
-  .light {
-    @apply text-gray-900 dark:text-gray-200 border-gray-900 dark:border-gray-200 placeholder-gray-900 dark:placeholder-gray-200
+    @apply inline-flex px-4 py-2.5 items-center justify-center font-medium transition-colors bg-white/60 dark:bg-white/10 rounded-full shadow-lg hover:bg-white/90 dark:hover:bg-white/20 focus:outline-lightfg placeholder-lightfg dark:placeholder-darkfg
   }
 
   .btn-sm {
@@ -87,7 +79,7 @@
   }
 
   .btn-lg {
-    @apply text-base px-5 py-2.5;
+    @apply text-base px-6 py-3;
   }
 }
 

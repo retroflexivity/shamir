@@ -2,6 +2,8 @@ import React, { useState, useMemo } from "react";
 import { Input } from "./ui/input";
 import { Badge } from "./ui/badge";
 import { Card } from "./ui/card";
+import { ThemeToggle } from "./ThemeToggle";
+import logoSvg from "../assets/logo.svg?raw";
 
 export interface Article {
   title: string;
@@ -139,16 +141,15 @@ export function HomePage({ articles }: HomePageProps) {
   }
 
   return (
-    <div className="mx-auto text-gray-900 dark:text-gray-200">
-      <div id="logo" className="flex justify-center items-center mt-20 mb-20">
-        <img
-          src="src/assets/logo.svg"
-          alt="Shamir Association Riga Ghetto and Latvia Holocaust Museum Logo"
-          className="max-w-[320px] w-full"
-        />
-      </div>
-      <div id="about" className="text-lg flex flex-col items-center gap-2 mb-10">
-        <p className="mb-5">
+    <div className="mx-auto text-lightfg dark:text-darkfg">
+      <ThemeToggle />
+      <div id="logo"
+        className="flex justify-center items-center mt-20 mb-10 text-lightaccent dark:text-darkaccent [&>svg]:w-full [&>svg]:h-auto [&>svg]:max-w-80"
+        dangerouslySetInnerHTML={{ __html: logoSvg }}
+        aria-label="Shamir Association Riga Ghetto and Latvia Holocaust Museum Logo"
+      />
+      <div id="about" className="flex flex-col items-center gap-2 mb-10">
+        <p className="mx-8 text-center text-2xl font-serif text-lightaccent dark:text-darkaccent mb-12">
           Больше двадцати лет мы сохраняем и исследуем память об истории евреев Латвии.
         </p>
         <div className="text-xl grid grid-cols-1 sm:grid-cols-3 gap-10 px-4 max-w-100">
@@ -156,7 +157,7 @@ export function HomePage({ articles }: HomePageProps) {
             <a
               key={link.href}
               href={link.href}
-              className="btn btn-lg light w-full text-center"
+              className="btn btn-lg w-full text-center"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -165,10 +166,10 @@ export function HomePage({ articles }: HomePageProps) {
           ))}
         </div>
       </div>
-      <hr className="max-w-xl mx-auto my-16"></hr>
-      <div id="articles" className="flex flex-col items-center gap-6 mb-6 px-4">
+      <hr className="max-w-xl mx-auto my-16 border-lightfg dark:border-darkfg"></hr>
+      <div id="articles" className="flex flex-col items-center gap-6 px-4">
         <Input
-          className="w-full max-w-xl focus:max-w-2xl light text-center text-xl transition-all duration-300 ease-in-out"
+          className="w-full max-w-xl shadow-md focus:max-w-2xl light text-center text-xl transition-all duration-300 ease-in-out"
           value={searchValue}
           onChange={e => setSearchValue(e.target.value)}
           placeholder="Искать"
@@ -188,12 +189,12 @@ export function HomePage({ articles }: HomePageProps) {
                 key={tag}
                 data-tag={tag}
                 className={
-                  'px-3 py-1 cursor-pointer rounded-full transition ' +
+                  'px-3 py-1 mb-6 shadow-md inset-shadow-xl cursor-pointer rounded-full transition hover:bg-lightfg dark:hover:bg-darkfg hover:text-lightbg dark:hover:text-darkbg ' +
                   (isSelected
-                    ? 'bg-gray-600 dark:bg-gray-200 text-gray-200 dark:text-gray-600'
+                    ? 'bg-lightfg dark:bg-darkfg text-lightbg dark:text-darkbg shadow-lg'
                     : isIncompatible
-                    ? 'text-gray-900 dark:text-gray-200 hover:bg-gray-600 hover:text-gray-200 dark:hover:bg-gray-200 dark:hover:text-gray-600 opacity-40'
-                    : 'text-gray-900 dark:text-gray-200 hover:bg-gray-600 hover:text-gray-200 dark:hover:bg-gray-200 dark:hover:text-gray-600'
+                    ? 'opacity-40'
+                    : ''
                   )
                 }
                 onClick={() => toggleTag(tag)}
@@ -211,23 +212,21 @@ export function HomePage({ articles }: HomePageProps) {
             href={article.slug ? `/${article.slug}` : '#'}
             className="block"
           >
-            <Card className="article-card group relative h-72 sm:h-72 md:h-80 lg:h-96 overflow-hidden bg-white dark:bg-gray-800 hover:shadow-lg transition p-0 flex cursor-pointer">
+            <Card className="article-card group relative h-72 sm:h-72 md:h-80 lg:h-96 overflow-hidden bg-darkbg transition p-0 flex cursor-pointer">
               {article.image && (
                 <div className="absolute inset-0">
-                  <img src={article.image} alt={article.title} className="w-full h-full object-cover object-center transition scale-105 brightness-[1] dark:brightness-[0.35] grayscale group-hover:grayscale-0 group-hover:brightness-100 dark:group-hover:brightness-[0.6]" />
+                  <img src={article.image} alt={article.title} className="w-full h-full object-cover object-center transition scale-105 grayscale group-hover:grayscale-0 brightness-[0.4] group-hover:brightness-[0.6]" />
+                  <div className="absolute inset-0 bg-darkbg mix-blend-screen opacity-50 group-hover:opacity-0 transition-opacity" />
                 </div>
               )}
               <div className="relative z-10 w-full h-full flex flex-col justify-end p-5">
-                <h2 className="font-bold text-gray-900 dark:text-white outline-solid drop-shadow-[0_2px_2px_rgba(0,0,0,1)] text-xl mb-1 line-clamp-6 uppercase break-words">{article.title}</h2>
-                <div className="mb-2 flex flex-wrap gap-1 text-gray-900 dark:text-white">
+                <h2 className="font-bold text-darkfg [text-shadow:_0_2px_8px_rgb(0_0_0_/_0.6),_0_1px_4px_rgb(0_0_0_/_0.8)] text-xl mb-1 line-clamp-6 uppercase break-words">{article.title}</h2>
+                <div className="mb-2 flex flex-wrap gap-1 text-darkfg [text-shadow:_0_1px_6px_rgb(0_0_0_/_0.6),_0_1px_3px_rgb(0_0_0_/_0.8)]">
                   {
-                    // (article.tags||[]).map(t =>
-                    //     <Badge key={t} className="bg-black/50 px-2 py-0.5 text-xs">{t}</Badge>
-                    // )
                     (article.tags||[]).join(" · ")
                   }
                 </div>
-                <div className="text-xs text-gray-700 dark:text-gray-300 mb-1">{formatDate(article.date)}</div>
+                <div className="text-xs text-darkfg/70 mb-1 [text-shadow:_0_1px_6px_rgb(0_0_0_/_0.6),_0_1px_3px_rgb(0_0_0_/_0.8)]">{formatDate(article.date)}</div>
                 {
                   // article.body && (
                   //   <div className="text-sm text-white/90 opacity-90 line-clamp-2">

@@ -18,8 +18,7 @@ const articles = (await getCollection('articles')).map(entry => ({
   <head>
     <SiteHead title="Articles" />
   </head>
-  <!-- <body class="bg-lightbg dark:bg-darkbg text-gray-900 dark:text-gray-200 transition-colors"> -->
-  <body class="dark bg-darkbg transition-colors">
+  <body class="bg-lightbg dark:bg-darkbg transition-colors">
     <HomePage client:load articles={articles} />
   </body>
 </html>

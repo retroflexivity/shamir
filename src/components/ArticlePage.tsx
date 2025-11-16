@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { marked } from "marked";
 import { Badge } from "./ui/badge";
+import { ThemeToggle } from "./ThemeToggle";
 import { Article } from "./HomePage";
 
 export interface ArticlePageProps {
@@ -21,11 +22,74 @@ export function ArticlePage({ article }: ArticlePageProps) {
 
   const renderedBody = useMemo(() => {
     if (!article.body) return "";
-    return marked.parse(article.body);
+    let html = marked.parse(article.body);
+    
+    // Process HTML to group consecutive images into a flex row
+    // First, handle paragraphs with multiple images on the same line (most common case)
+    html = html.replace(
+      /<p>((?:\s*<img[^>]*>\s*){2,})<\/p>/gi,
+      (match, imagesContent) => {
+        const imgMatches = imagesContent.match(/<img[^>]*>/gi);
+        if (!imgMatches || imgMatches.length < 2) return match;
+        
+        const wrappedImages = imgMatches.map((img) => {
+          return `<div class="image-grid-item">${img}</div>`;
+        }).join('');
+        
+        return `<div class="image-grid my-6 flex flex-wrap gap-4">${wrappedImages}</div>`;
+      }
+    );
+    
+    // Handle paragraphs with images wrapped in links
+    html = html.replace(
+      /<p>((?:\s*(?:<a[^>]*>\s*)?<img[^>]*>\s*(?:<\/a>)?\s*){2,})<\/p>/gi,
+      (match, imagesContent) => {
+        // Skip if already processed
+        if (match.includes('image-grid')) return match;
+        
+        const imgMatches = imagesContent.match(/<img[^>]*>/gi);
+        if (!imgMatches || imgMatches.length < 2) return match;
+        
+        // Extract full image elements (with links if present)
+        const imageElements = imagesContent.match(/(?:<a[^>]*>\s*)?<img[^>]*>\s*(?:<\/a>)?/gi) || [];
+        
+        const wrappedImages = imageElements.map((elem) => {
+          return `<div class="image-grid-item">${elem.trim()}</div>`;
+        }).join('');
+        
+        return `<div class="image-grid my-6 flex flex-wrap gap-4">${wrappedImages}</div>`;
+      }
+    );
+    
+    // Handle multiple consecutive paragraphs, each with a single image
+    html = html.replace(
+      /(<p>\s*(?:<a[^>]*>)?\s*<img[^>]*>\s*(?:<\/a>)?\s*<\/p>\s*){2,}/gi,
+      (match) => {
+        // Skip if already processed
+        if (match.includes('image-grid')) return match;
+        
+        const imgMatches = match.match(/<img[^>]*>/gi);
+        if (!imgMatches || imgMatches.length < 2) return match;
+        
+        // Extract full paragraph content (with links if present)
+        const paragraphMatches = match.match(/<p>\s*(?:<a[^>]*>)?\s*<img[^>]*>\s*(?:<\/a>)?\s*<\/p>/gi);
+        if (!paragraphMatches) return match;
+        
+        const wrappedImages = paragraphMatches.map((para) => {
+          const content = para.replace(/<\/?p>/gi, '').trim();
+          return `<div class="image-grid-item">${content}</div>`;
+        }).join('');
+        
+        return `<div class="image-grid my-6 flex flex-wrap gap-4">${wrappedImages}</div>`;
+      }
+    );
+    
+    return html;
   }, [article.body]);
 
   return (
     <div className="mx-auto max-w-6xl px-6 sm:px-16 py-8">
+      <ThemeToggle />
       <div className="mb-6 hidden sm:block">
         <a
           href="/"
@@ -49,8 +113,7 @@ export function ArticlePage({ article }: ArticlePageProps) {
         }
       </div>
       <h1 
-        className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold mb-4 uppercase hyphens-auto"
-        lang="ru"
+        className="text-2xl md:text-3xl lg:text-4xl font-serif font-semibold text-lightaccent dark:text-darkaccent mb-4 uppercase hyphens-auto"
       >
         {article.title}
       </h1>
@@ -63,7 +126,7 @@ export function ArticlePage({ article }: ArticlePageProps) {
       <div className="prose dark:prose-invert max-w-none">
         {renderedBody && (
           <div
-            className="leading-relaxed"
+            className="leading-relaxed [&_.image-grid]:!my-8 [&_.image-grid]:!flex [&_.image-grid]:!flex-wrap [&_.image-grid]:!gap-4 [&_.image-grid-item]:!flex-shrink-0 [&_.image-grid-item]:!overflow-hidden [&_.image-grid-item]:!rounded-lg [&_.image-grid-item_img]:!h-80 [&_.image-grid-item_img]:!w-auto [&_.image-grid-item_img]:!object-contain [&_.image-grid-item_a]:!block [&_.image-grid-item_a]:!inline-block"
             dangerouslySetInnerHTML={{ __html: renderedBody }}
           />
         )}

@@ -6,7 +6,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => (
   <input
     className={cn(
-      "flex h-9 w-full rounded-3xl py-5 px-6 text-sm outline-none bordered bg-transparent focus:placeholder-transparent",
+      "px-4 py-2 flex w-full btn focus:placeholder-transparent outline-none focus:outline-none font-normal",
       className
     )}
     ref={ref}
