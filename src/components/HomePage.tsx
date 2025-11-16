@@ -2,17 +2,9 @@ import React, { useState, useMemo } from "react";
 import { Input } from "./ui/input";
 import { Badge } from "./ui/badge";
 import { Card } from "./ui/card";
-import { ThemeToggle } from "./ThemeToggle";
+import { Header } from "./Header";
+import type { Article } from "./types";
 import logoSvg from "../assets/logo.svg?raw";
-
-export interface Article {
-  title: string;
-  image?: string;
-  tags?: string[];
-  date?: Date | string;
-  body?: string;
-  slug?: string;
-}
 
 export interface HomePageProps {
   articles: Article[];
@@ -20,7 +12,7 @@ export interface HomePageProps {
 
 const projectLinks: {href: string, label: string}[] = [
   { href: "http://shamir.lv/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/", label: "Наши публикации" },
-  { href: "https://www.rglhm.lv/", label: "Музей рижского гетто" },
+  { href: "https://www.rglhm.lv/", label: "Музей Рижского гетто" },
   { href: "http://shamir.lv/eitc-2/", label: "Центр толерантности" },
 ];
 
@@ -142,16 +134,19 @@ export function HomePage({ articles }: HomePageProps) {
 
   return (
     <div className="mx-auto text-lightfg dark:text-darkfg">
-      <ThemeToggle />
+      <div className="mx-8">
+        <Header/>
+      </div>
       <div id="logo"
-        className="flex justify-center items-center mt-20 mb-10 text-lightaccent dark:text-darkaccent [&>svg]:w-full [&>svg]:h-auto [&>svg]:max-w-80"
+        className="flex justify-center items-center mt-10 mb-10 text-lightaccent dark:text-darkaccent [&>svg]:w-full [&>svg]:h-auto [&>svg]:max-w-80"
         dangerouslySetInnerHTML={{ __html: logoSvg }}
         aria-label="Shamir Association Riga Ghetto and Latvia Holocaust Museum Logo"
       />
       <div id="about" className="flex flex-col items-center gap-2 mb-10">
-        <p className="mx-8 text-center text-2xl font-serif text-lightaccent dark:text-darkaccent mb-12">
-          Больше двадцати лет мы сохраняем и исследуем память об истории евреев Латвии.
-        </p>
+        <div className="mx-8 text-center font-serif text-lightaccent dark:text-darkaccent mb-4">
+          <p className="text-2xl">Больше двадцати лет мы сохраняем и исследуем память об истории евреев Латвии.</p>
+          <p className="text-xl">Основная деятельность Шамира сейчас — музей Рижского гетто. А это сайт-архив, где можно узнать о наших прошлых проектах.</p>
+        </div>
         <div className="text-xl grid grid-cols-1 sm:grid-cols-3 gap-10 px-4 max-w-100">
           {projectLinks.map((link) => (
             <a
@@ -205,7 +200,7 @@ export function HomePage({ articles }: HomePageProps) {
           })}
         </div>
       </div>
-      <div id="article-grid" className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+      <div id="article-grid" className="grid mb-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {filtered.map((article, i) => (
           <a
             key={article.title + i}
@@ -239,6 +234,37 @@ export function HomePage({ articles }: HomePageProps) {
           </a>
         ))}
       </div>
+      <footer className="pb-10 px-4 text-center">
+        <hr className="max-w-xl mx-auto my-12 border-lightfg dark:border-darkfg"></hr>
+        <h2 className="text-xl mb-4">Общество Шамир</h2>
+        <div className="max-w-xl mx-auto grid grid-cols-1 md:grid-cols-2">
+          <div>
+            <h3 className="text-lg underline">Связаться с нами:</h3>
+            <p>
+              <a href="mailto:shamir@shamir.lv">
+                shamir@shamir.lv
+              </a>
+            </p>
+            <p>
+              Shamir Society<br />
+              Turgeneva 2<br />
+              Riga, LV-1050<br />
+              Latvia
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg underline">Пожертвовать:</h3>
+            <p>
+              Shamir Society<br />
+              Reg Nr 40008083814<br />
+              SEB Banka<br />
+              SWIFT UNLALV2X<br />
+              LV64UNLA0050020638195 (EUR)
+            </p>
+            <p className="mt-4">PayPal: rgm@rgm.lv</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

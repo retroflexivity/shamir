@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
 
 export function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    // Check localStorage first, then DOM as fallback
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === 'dark';
+    }
+    return document.documentElement.classList.contains('dark');
+  });
 
   useEffect(() => {
-    // Check initial theme
     const checkTheme = () => {
-      const isDarkMode = document.documentElement.classList.contains('dark');
+      // Check both DOM and localStorage to be sure
+      const hasDarkClass = document.documentElement.classList.contains('dark');
+      const savedTheme = localStorage.getItem('theme');
+      const isDarkMode = hasDarkClass || savedTheme === 'dark';
       setIsDark(isDarkMode);
     };
 
     checkTheme();
 
-    // Watch for theme changes
     const observer = new MutationObserver(checkTheme);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -24,6 +33,7 @@ export function ThemeToggle() {
 
   const toggleTheme = () => {
     const currentIsDark = document.documentElement.classList.contains('dark');
+    console.log(currentIsDark)
     const newTheme = currentIsDark ? 'light' : 'dark';
     
     if (newTheme === 'dark') {
@@ -39,7 +49,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="btn fixed top-4 right-4 z-50 p-2 shadow-md"
+      className="btn p-2 shadow-md"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >

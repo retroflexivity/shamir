@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
 import { marked } from "marked";
-import { Badge } from "./ui/badge";
-import { ThemeToggle } from "./ThemeToggle";
-import { Article } from "./HomePage";
+import { Header } from "./Header";
+import type { Article } from "./types";
 
 export interface ArticlePageProps {
   article: Article;
@@ -88,16 +87,8 @@ export function ArticlePage({ article }: ArticlePageProps) {
   }, [article.body]);
 
   return (
-    <div className="mx-auto max-w-6xl px-6 sm:px-16 py-8">
-      <ThemeToggle />
-      <div className="mb-6 hidden sm:block">
-        <a
-          href="/"
-          className="btn w-auto"
-        >
-          ← Вернуться на главную
-        </a>
-      </div>
+    <div className="mx-auto max-w-6xl px-6 sm:px-16">
+      <Header showBackButton={true} />
 
       {article.image && (
         <img
