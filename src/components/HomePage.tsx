@@ -1,7 +1,5 @@
-import React, { useState, useMemo } from "react";
-import { Input } from "./ui/input";
-import { Badge } from "./ui/badge";
-import { Card } from "./ui/card";
+import React, { useMemo } from "react";
+import { ArticleCard } from "./ui/card";
 import { Header } from "./Header";
 import type { Article } from "./types";
 import logoSvg from "../assets/logo.svg?raw";
@@ -16,121 +14,41 @@ const projectLinks: {href: string, label: string}[] = [
   { href: "http://shamir.lv/eitc-2/", label: "Центр толерантности" },
 ];
 
-const priorityTags : Set<string> = new Set([
-  'Деятельность',
-  'Проекты',
-  'Исследования',
-  'Выставки'
-])
+const sections = new Map([
+  ['publications', { title: 'Публикации', tag: 'Деятельность' }],
+  ['projects', { title: 'Проекты', tag: 'Проекты' }],
+  ['exhibitions', { title: 'Выставки', tag: 'Выставки' }],
+  ['concerts', { title: 'Концерты', tag: 'Концерты' }],
+]);
 
 export function HomePage({ articles }: HomePageProps) {
-  const allTags = useMemo(() =>
-    Array.from(new Set(articles.flatMap(a => a.tags || [])))
-  , [articles]);
-  const [searchValue, setSearchValue] = useState("");
-  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
-  const normalize = (text: string) => text.toLowerCase().replace(/ё/g, "е");
-
-  // Check if a tag is compatible with currently selected tags
-  // A tag is compatible if there exists at least one article that has both the tag and all selected tags
-  const isTagCompatible = useMemo(() => {
-    const compatibilityMap = new Map<string, boolean>();
+  // Get articles for each section
+  const sectionArticles = useMemo(() => {
+    const result = new Map<string, Article[]>();
     
-    if (selectedTags.size === 0) {
-      // If no tags are selected, all tags are compatible
-      allTags.forEach(tag => compatibilityMap.set(tag, true));
-    } else {
-      allTags.forEach(tag => {
-        // Check if there's at least one article that has both this tag and all selected tags
-        const isCompatible = articles.some(article => {
-          const articleTags = article.tags || [];
-          return articleTags.includes(tag) && 
-                 [...selectedTags].every(selectedTag => articleTags.includes(selectedTag));
-        });
-        compatibilityMap.set(tag, isCompatible);
-      });
-    }
-    
-    return (tag: string) => compatibilityMap.get(tag) ?? false;
-  }, [articles, selectedTags, allTags]);
-
-  // Count articles per tag
-  const tagArticleCounts = useMemo(() => {
-    return new Map(allTags.map(tag => [tag, articles.reduce((n, a) => ((a.tags || []).includes(tag) ? n+1 : n), 0)]))
-  }, [articles, allTags]);
-
-  const preSortedTags = allTags.toSorted(
-    (a: string, b: string) => (tagArticleCounts.get(b) || 0)
-                            - (tagArticleCounts.get(a) || 0)
-                            + (priorityTags.has(b) ? 1000 : 0)
-                            + (priorityTags.has(a) ? -1000 : 0)
-    
-  )
-
-  // Sort tags: selected first, compatible second, incompatible last
-  // Within each group, sort by number of associated articles (descending)
-  const sortedTags = useMemo(() => {
-    const selected: string[] = [];
-    const compatible: string[] = [];
-    const incompatible: string[] = [];
-    
-    preSortedTags.forEach(tag => {
-      if (selectedTags.has(tag)) {
-        selected.push(tag);
-      } else if (isTagCompatible(tag)) {
-        compatible.push(tag);
-      } else {
-        incompatible.push(tag);
-      }
+    sections.forEach((section, key) => {
+      const filtered = articles
+        .filter(article => (article.tags || []).includes(section.tag))
+        .sort((a, b) => {
+          const getDateValue = (dt: Date | string | undefined): number => {
+            if (!dt) return 0;
+            if (typeof dt === "string") {
+              const d = new Date(dt);
+              return isNaN(d.getTime()) ? 0 : d.getTime();
+            }
+            if (dt instanceof Date) return dt.getTime();
+            return 0;
+          };
+          const dateA = getDateValue(a.date);
+          const dateB = getDateValue(b.date);
+          return dateB - dateA; // Descending order (newest first)
+        })
+        .slice(0, 4); // Get only first 4
+      result.set(key, filtered);
     });
     
-    return [...selected, ...compatible, ...incompatible];
-  }, [allTags, selectedTags, isTagCompatible, tagArticleCounts]);
-
-  const filtered = useMemo(() => {
-    const filteredArticles = articles.filter(article => {
-      const matchText = normalize(article.title).includes(normalize(searchValue));
-      // const matchTag = selectedTags.size === 0 || (article.tags||[]).some(tag => selectedTags.has(tag));
-      const matchTag = selectedTags.size === 0 || [...selectedTags].every(tag => (article.tags||[]).includes(tag));
-      return matchText && matchTag;
-    });
-
-    // Sort by date (newest first)
-    return filteredArticles.sort((a, b) => {
-      const getDateValue = (dt: Date | string | undefined): number => {
-        if (!dt) return 0;
-        if (typeof dt === "string") {
-          const d = new Date(dt);
-          return isNaN(d.getTime()) ? 0 : d.getTime();
-        }
-        if (dt instanceof Date) return dt.getTime();
-        return 0;
-      };
-
-      const dateA = getDateValue(a.date);
-      const dateB = getDateValue(b.date);
-      return dateB - dateA; // Descending order (newest first)
-    });
-  }, [articles, searchValue, selectedTags]);
-
-  function toggleTag(tag: string) {
-    setSelectedTags((prev) => {
-      const next = new Set((isTagCompatible(tag)) ? prev : null)
-      if (next.has(tag)) next.delete(tag); else next.add(tag);
-      return next;
-    });
-  }
-
-  function formatDate(dt: Date | string | undefined): string {
-    if (!dt) return "";
-    if (typeof dt === "string") {
-      const d = new Date(dt);
-      if (!isNaN(d as any)) return d.toLocaleDateString("en-GB");
-      return dt;
-    }
-    if (dt instanceof Date) return dt.toLocaleDateString("en-GB");
-    return "";
-  }
+    return result;
+  }, [articles]);
 
   return (
     <div className="mx-auto text-lightfg dark:text-darkfg">
@@ -162,78 +80,30 @@ export function HomePage({ articles }: HomePageProps) {
         </div>
       </div>
       <hr className="max-w-xl mx-auto my-16 border-lightfg dark:border-darkfg"></hr>
-      <div id="articles" className="flex flex-col items-center gap-6 px-4">
-        <Input
-          className="w-full max-w-xl shadow-md focus:max-w-2xl light text-center text-xl transition-all duration-300 ease-in-out"
-          value={searchValue}
-          onChange={e => setSearchValue(e.target.value)}
-          placeholder="Искать"
-          id="search-input"
-        />
-        <div
-          id="tag-list"
-          className="flex flex-nowrap overflow-x-auto whitespace-nowrap gap-x-2 px-1 w-full scrollbar-thin scrollbar-thumb-gray-300 no-scrollbar"
-        >
-          {sortedTags.map(tag => {
-            const isSelected = selectedTags.has(tag);
-            const isCompatible = isTagCompatible(tag);
-            const isIncompatible = !isSelected && !isCompatible;
-            
-            return (
-              <Badge
-                key={tag}
-                data-tag={tag}
-                className={
-                  'px-3 py-1 mb-6 shadow-md inset-shadow-xl cursor-pointer rounded-full transition hover:bg-lightfg dark:hover:bg-darkfg hover:text-lightbg dark:hover:text-darkbg ' +
-                  (isSelected
-                    ? 'bg-lightfg dark:bg-darkfg text-lightbg dark:text-darkbg shadow-lg'
-                    : isIncompatible
-                    ? 'opacity-40'
-                    : ''
-                  )
-                }
-                onClick={() => toggleTag(tag)}
+      
+      {Array.from(sections.entries()).map(([key, section]) => {
+        const sectionArticlesList = sectionArticles.get(key) || [];
+        
+        return (
+          <div key={key} className="mb-16 px-4">
+            <div className="flex justify-between items-center mb-6 max-w-7xl mx-auto">
+              <h2 className="text-3xl font-bold">{section.title}</h2>
+              <a
+                href={`/archive?tag=${encodeURIComponent(section.tag)}`}
+                className="btn"
               >
-                {tag}
-              </Badge>
-            );
-          })}
-        </div>
-      </div>
-      <div id="article-grid" className="grid mb-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-        {filtered.map((article, i) => (
-          <a
-            key={article.title + i}
-            href={article.slug ? `/${article.slug}` : '#'}
-            className="block"
-          >
-            <Card className="article-card group relative h-72 sm:h-72 md:h-80 lg:h-96 overflow-hidden bg-darkbg transition p-0 flex cursor-pointer">
-              {article.image && (
-                <div className="absolute inset-0">
-                  <img src={article.image} alt={article.title} className="w-full h-full object-cover object-center transition scale-105 grayscale group-hover:grayscale-0 brightness-[0.4] group-hover:brightness-[0.6]" />
-                  <div className="absolute inset-0 bg-darkbg mix-blend-screen opacity-50 group-hover:opacity-0 transition-opacity" />
-                </div>
-              )}
-              <div className="relative z-10 w-full h-full flex flex-col justify-end p-5">
-                <h2 className="font-bold text-white/90 [text-shadow:_0_2px_8px_rgb(0_0_0_/_0.6),_0_1px_4px_rgb(0_0_0_/_0.8)] text-xl mb-1 line-clamp-6 uppercase break-words">{article.title}</h2>
-                <div className="mb-2 flex flex-wrap gap-1 text-darkfg [text-shadow:_0_1px_6px_rgb(0_0_0_/_0.6),_0_1px_3px_rgb(0_0_0_/_0.8)]">
-                  {
-                    (article.tags||[]).join(" · ")
-                  }
-                </div>
-                <div className="text-xs text-darkfg/70 mb-1 [text-shadow:_0_1px_6px_rgb(0_0_0_/_0.6),_0_1px_3px_rgb(0_0_0_/_0.8)]">{formatDate(article.date)}</div>
-                {
-                  // article.body && (
-                  //   <div className="text-sm text-white/90 opacity-90 line-clamp-2">
-                  //     {article.body.slice(0, 150).replace(/\n+/g, ' ')}{article.body.length > 150 ? '…' : ''}
-                  //   </div>
-                  // )
-                }
-              </div>
-            </Card>
-          </a>
-        ))}
-      </div>
+                Все {section.title.toLowerCase()} →
+              </a>
+            </div>
+            <div className="grid mb-0 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+              {sectionArticlesList.map((article, i) => (
+                <ArticleCard key={article.title + i} article={article} />
+              ))}
+            </div>
+          </div>
+        );
+      })}
+      
       <footer className="pb-10 px-4 text-center">
         <hr className="max-w-xl mx-auto my-12 border-lightfg dark:border-darkfg"></hr>
         <h2 className="text-xl mb-4">Общество Шамир</h2>

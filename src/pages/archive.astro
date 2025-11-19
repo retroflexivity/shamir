@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import '../styles/globals.css';
-import { HomePage } from '../components/HomePage';
+import { ArchivePage } from '../components/ArchivePage';
 import SiteHead from '../components/SiteHead.astro';
 
 const articles = (await getCollection('articles')).map(entry => ({
@@ -12,13 +12,15 @@ const articles = (await getCollection('articles')).map(entry => ({
   body: entry.body,
   slug: entry.slug,
 }));
+
+const initialTag = Astro.url.searchParams.get('tag') ? decodeURIComponent(Astro.url.searchParams.get('tag')!) : '';
 ---
 
 <html lang="en" class="">
   <head>
-    <SiteHead title="Главная" />
+    <SiteHead title="Архив" />
   </head>
   <body class="bg-lightbg dark:bg-darkbg transition-colors">
-    <HomePage client:load articles={articles} />
+    <ArchivePage client:load articles={articles} initialTag={initialTag} />
   </body>
 </html>
