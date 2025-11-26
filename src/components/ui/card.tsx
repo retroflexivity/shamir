@@ -31,7 +31,8 @@ function formatDate(dt: Date | string | undefined): string {
 }
 
 export function ArticleCard({ article, href }: ArticleCardProps) {
-  const linkHref = href || (article.slug ? `/${article.slug}` : '#');
+  const targetSlug = article.slug || article.id;
+  const linkHref = href || (targetSlug ? `/${targetSlug}` : '#');
   
   return (
     <a

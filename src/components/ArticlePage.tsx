@@ -94,7 +94,7 @@ export function ArticlePage({ article }: ArticlePageProps) {
         <img
           src={article.image}
           alt={article.title}
-          className="mb-4 max-h-80 object-cover md:float-right md:ml-10 md:w-auto"
+          className="mb-4 max-h-80 max-w-[50%] object-cover md:float-right md:ml-10 md:w-auto"
         />
       )}
 

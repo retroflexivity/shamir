@@ -4,14 +4,18 @@ import '../styles/globals.css';
 import { HomePage } from '../components/HomePage';
 import SiteHead from '../components/SiteHead.astro';
 
-const articles = (await getCollection('articles')).map(entry => ({
-  title: entry.data.title,
-  image: entry.data.image,
-  tags: Array.isArray(entry.data.tags) ? entry.data.tags : (entry.data.tags ? [entry.data.tags] : []),
-  date: entry.data.date,
-  body: entry.body,
-  slug: entry.slug,
-}));
+const articles = (await getCollection('articles')).map(entry => {
+  const id = entry.data.id?.toString() || entry.slug;
+  return {
+    id,
+    title: entry.data.title,
+    image: entry.data.image,
+    tags: Array.isArray(entry.data.tags) ? entry.data.tags : (entry.data.tags ? [entry.data.tags] : []),
+    date: entry.data.date,
+    body: entry.body,
+    slug: id,
+  };
+});
 ---
 
 <html lang="en" class="">

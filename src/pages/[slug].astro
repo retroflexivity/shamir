@@ -6,18 +6,23 @@ import SiteHead from '../components/SiteHead.astro';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
-  return articles.map((article) => ({
-    params: { slug: article.slug },
-    props: {
-      article: {
-        title: article.data.title,
-        image: article.data.image,
-        tags: Array.isArray(article.data.tags) ? article.data.tags : (article.data.tags ? [article.data.tags] : []),
-        date: article.data.date,
-        body: article.body,
+  return articles.map((article) => {
+    const id = article.data.id?.toString() || article.slug;
+    return {
+      params: { slug: id },
+      props: {
+        article: {
+          id,
+          title: article.data.title,
+          image: article.data.image,
+          tags: Array.isArray(article.data.tags) ? article.data.tags : (article.data.tags ? [article.data.tags] : []),
+          date: article.data.date,
+          body: article.body,
+          slug: id,
+        },
       },
-    },
-  }));
+    };
+  });
 }
 
 const { article } = Astro.props;
