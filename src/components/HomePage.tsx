@@ -11,6 +11,7 @@ export interface HomePageProps {
 
 const projectLinks: {href: string, label: string}[] = [
   { href: "https://www.rglhm.lv/", label: "На сайт музея Рижского гетто" },
+  { href: "https://www.zahor.lv/", label: "Поддержать память жертв Холокоста" },
 ];
 
 const sections = new Map([
@@ -63,12 +64,13 @@ export function HomePage({ articles }: HomePageProps) {
           <p className="text-2xl">Больше двадцати лет мы сохраняем и исследуем память об истории евреев Латвии.</p>
           <p className="text-xl mb-0">Основная деятельность Шамира сейчас — музей Рижского гетто. А это сайт-архив, где можно узнать о наших прошлых проектах.</p>
         </div>
-        <div className="text-xl grid grid-cols-1 gap-10 px-4 max-w-100 mb-6">
+        <div className="text-xl grid gap-10 px-4 mb-6">
           {projectLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="btn btn-lg w-full text-center"
+              className="btn btn-lg text-center"
+              target="_blank"
               rel="noopener noreferrer"
             >
               {link.label}
