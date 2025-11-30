@@ -1,6 +1,8 @@
 import * as React from "react"
 import { cn } from "../../lib/utils"
 import type { Article } from "../types"
+import type { Locale } from "../../i18n/translations"
+import { getLocalizedPath } from "../../i18n/utils"
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -17,6 +19,7 @@ export { Card }
 export interface ArticleCardProps {
   article: Article;
   href?: string;
+  locale?: Locale;
 }
 
 function formatDate(dt: Date | string | undefined): string {
@@ -30,9 +33,9 @@ function formatDate(dt: Date | string | undefined): string {
   return "";
 }
 
-export function ArticleCard({ article, href }: ArticleCardProps) {
+export function ArticleCard({ article, href, locale = 'ru' }: ArticleCardProps) {
   const targetSlug = article.slug || article.id;
-  const linkHref = href || (targetSlug ? `/${targetSlug}` : '#');
+  const linkHref = href || (targetSlug ? getLocalizedPath(`/${targetSlug}`, locale) : '#');
   
   return (
     <a

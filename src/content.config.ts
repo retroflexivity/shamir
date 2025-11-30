@@ -29,6 +29,7 @@ const baseArticleSchema = z.object({
       return isNaN(d.getTime()) ? undefined : d;
     }),
   oldUrl: z.string().optional(),
+  locale: z.enum(['ru', 'lv', 'en']).default('ru'),
 });
 
 const articles = defineCollection({

@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import '../../styles/globals.css';
+import { ArchivePage } from '../../components/ArchivePage';
+import SiteHead from '../../components/SiteHead.astro';
+import { getTranslations, defaultLocale, locales } from '../../i18n/translations';
+
+export async function getStaticPaths() {
+  // Only generate paths for non-default locales (default is handled by root archive.astro)
+  return locales
+    .filter(locale => locale !== defaultLocale)
+    .map(locale => ({
+      params: { locale },
+    }));
+}
+
+const locale = Astro.params.locale as 'ru' | 'lv' | 'en';
+if (!locale || !locales.includes(locale)) {
+  return Astro.redirect('/archive');
+}
+
+const t = getTranslations(locale);
+
+const allArticles = await getCollection('articles');
+const articles = allArticles
+  .filter(entry => entry.data.locale === locale)
+  .map(entry => {
+    const id = entry.data.id?.toString() || entry.slug;
+    return {
+      id,
+      title: entry.data.title,
+      image: entry.data.image,
+      tags: Array.isArray(entry.data.tags) ? entry.data.tags : (entry.data.tags ? [entry.data.tags] : []),
+      date: entry.data.date,
+      body: entry.body,
+      slug: id,
+      locale: entry.data.locale,
+    };
+  });
+
+const initialTag = Astro.url.searchParams.get('tag') ? decodeURIComponent(Astro.url.searchParams.get('tag')!) : '';
+---
+
+<html lang={locale} class="">
+  <head>
+    <SiteHead title={t.archive} />
+  </head>
+  <body class="bg-lightbg dark:bg-darkbg transition-colors">
+    <ArchivePage client:load articles={articles} initialTag={initialTag} locale={locale} translations={t} currentPath={`/${locale}/archive`} />
+  </body>
+</html>

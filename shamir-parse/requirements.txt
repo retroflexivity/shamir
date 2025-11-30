@@ -1,0 +1,5 @@
+pandas
+slugify
+beautifulsoup4
+markdownify
+tqdm

@@ -1,0 +1,47 @@
+---
+id: "100"
+title: "Вторая международная конференция “Музеи и мемориальные места Холокоста в пост-коммунистических странах: вызовы и возможности”"
+image: "http://shamir.lv/wp-content/uploads/2016/03/IMG_9987-600x426.jpg"
+tags: ['Конференции', 'Музей рижского гетто']
+date: 2013-05-27
+oldUrl: http://shamir.lv/2013/05/27/%d0%b2%d1%82%d0%be%d1%80%d0%b0%d1%8f-%d0%bc%d0%b5%d0%b6%d0%b4%d1%83%d0%bd%d0%b0%d1%80%d0%be%d0%b4%d0%bd%d0%b0%d1%8f-%d0%ba%d0%be%d0%bd%d1%84%d0%b5%d1%80%d0%b5%d0%bd%d1%86%d0%b8%d1%8f-%d0%bc/
+---
+
+27-28 мая 2013 г. в Риге в Академии наук Латвии (на 3-ем этаже) пройдёт Вторая международная конференция «Музеи и мемориальные места Холокоста в пост-коммунистических странах: вызовы и возможности». Участники конференции подчеркнут важность сохранения памяти о Холокосте в небольших странах с противоречивой исторической памятью, а также выявят скрытые ресурсы, обсудят особенности преподавания истории Холокоста и толерантности, а также сложные вопросы этой темы. В рамках конференции пройдёт практический семинар по неформальному еврейскому образованию.
+
+Почетный гость — бывший рижанин раввин д-р Иосиф Менделевич, известный отказник, участвовал в попытке угона самолета «Операция Свадьба», она же «Ленинградское самолетное дело».
+
+В этом году более 10 послов будут участвовать в сессии, посвященной увековечиванию памяти и проблематики истории Холокоста в странах, которые они представляют. В рамках отдельной сессии, посвещённой теме образования и преподавания истории Холокоста, будет рассмотрен опыт разных стран, которые представлют участники конференции. В рамках отдельной сессии будут просморены новейшие проекты фильмов местных и зарубежных авторов. У участников конференции также будет возможность посетить музей Рижского гетто и Холокоста Латвии, выставочные экспозиции которого активно в данное время разрабатываются. В этом году в течении двух дней конференции прозвучат более 40 докладов. См. программу конференции ниже.
+
+Конференцию поддерживают: Министерство культуры Латвийской Республики, департамент образования, культуры и спорта Рижской думы, L.A. Pincus Fund, Dutch Jewish Humanitarian Fund, EACEA (Education, Audiovisual and Culture Executive Agency).  
+ Запись и дополнительная информация: project@shamir.lv, +371-67791784.
+
+Приглашаем всех желающих!
+
+Программа конференции:
+
+**27.05.2013**
+
+|  |  |  |
+| --- | --- | --- |
+| 9:00 – 10:00 | **Registration (the Hall on the 3rd floor)** | |
+| 10:00 – 10:30 | **Opening of the conference:** Rabbi Dr. paed. Menachem Barkahan (Riga, Latvia) Rabbi Dr. Josef Mendelevich (Jerusalem, Israel) Māris Gailis (Riga, Latvia) — Žanis Lipke Memorial | |
+| 10:30 – 12:00 | **Session 1: Session of ambassadors**, moderators: Edward Jacobs (New York, USA) and  Aldis Alliks (Riga, Latvia) | |
+| 12:00 – 12:20 | **Coffee break** | |
+| 12:20 – 14:00 | **Session 2 (part I): Memorialization of the Holocaust** 1)      Dovid Katz (Vilnius, Lithuania) — State-Sponsored Collective Memory Revisionism: A 21st Century Incarnation of Holocaust Denial?  2)      Aivars Borovkovs (Riga, Latvia) — International memorial project „Nekropole.info”  3)      Edward Jacobs (New York, USA) — The Berenbaum Group; Designing the New Jewish Memorial Museum in Skopje  4)      Aldis Alliks (Riga, Latvia) — Memorialization of the Holocaust and the Latvian Law  5)      Miklós Horváth (Budapest, Hungary) — “Who saves one life saves the whole world” (Talmud) | |
+| 14:00 – 15:00 | **Lunch break** | |
+| 15:00 – 16:30 | **Session 2 (part II): Memorialization of the Holocaust** 1)      Anna Ziębinska-Witek (Lublin, Poland) — Victims of the Holocaust in Museum Exhibitions: New Ways of Representation  2)      Savinova Alyona (Kiev, Ukraine) — Holocaust in the Internet-space of Ukraine: modern technologies and new methods of interaction with the audience  3)      Lisa Ghali (Washington, USA) — Restoring Family Links, American Red Cross  4)      Joanna Zetar (Lublin, Poland) — “The Memory of the Place” — pre-war Jewish Life and Holocaust  in Lublin commemorated in educational, artistic and documentary activities of Ośrodek “Brama Grodzka – Teatr NN”  5)      Daniil Tunin (Moscow, Russia) -Rescue of the Jews in the territory of occupied Belarus (1941-1944) | **Session 3 (parallel, part I), the Hall on the 2nd floor: Education and the history of the Holocaust** 1)      Sergei Shoshin (Saratov, Russia) — Educational Problems of Historical Memory about Holocaust’s Facts in the Conditions of Modern Russia  2)      Igor Shchupak (Dnipropetrovsk, Ukraine) — Ukrainian Righteous Amongst the Nations: the problems of the studying and memory preserving phenomenon  3)      Oleksiy Chebotaryov (Kharkiv, Ukraine) — Holocaust in historical higher education in Ukraine  4)      Olga Savchuk (Kiev, Ukraine) — Ukrainian Experience of Tolerance Informal Education  5)      Dmitry Alekseev (Moscow, Russia) -Contemporary projects on Holocaust topic: the experience of comprehension |
+| 16:30 – 16:45 | **Break** |  |
+| 16:45 – 18:00 | **Session 4: Session of films** 1)      Danute Selcinskaja, Lilija Kopacz (Vilnius, Lithuania) — The Documentary “The Pit of Life and Torment”  2)      Antra Gaile (Riga, Latvia) — Documentary “Ghetto Stories. Rīga”  3)      Gregory Reikhman (Ashdod, Israel) — The Project “In the line of fire. The experience of a collective portrait of a Warrior-Jew during World War II” | **Session 3 (parallel, part II), the Hall on the 2nd floor: Education and the history of the Holocaust** 1)      Tatiana Pasman (Pskov, Russia) -Field work and networking with students who study history of the Holocaust in terms of children’scomprehensive local history expedition  2)      Neonila Tzuganok (Asipovichy, Belarus) — Participation in the regional educational departaments to develop researching work about the Holocaust amongst pupils  3)      Josif Rochko (Riga, Latvia) – About a book M. Kantor  “Was this a dream?”  4)      Milan Chersonskij (Vilnius, Lithuania) -Rehabilitation of the past – a tool of modern politics |
+| 18:00 – 19:00 | **Dinner break** | |
+| 19:00 – 20:00 | **Guided tour “Riga Ghetto Museum”** | |
+
+**28.05.2013**
+
+|  |  |
+| --- | --- |
+| 9:00 – 11:00 | **Session 5, the Hall on the 3rd floor: Resistance movement; Righteous Amongst the Nations; Jews of the Reich and Protectorate deported to Eastern Europe for extermination** 1)      Elena Makarova (Haifa, Israel) — Jews of the Protectorate Bohemia and Moravia deported to Riga in World War II  2)      Alexandra Tcherkasski (Dortmund, Germany) — Memorialization of deportation and extermination places in Latvia during World War II and after the War  3)      Aron Shneyer (Jerusalem, Israel) — Memorialization and its features. Common and individual  4)      Batia Valdman (Beer-Sheva, Israel) — Illegal Aliyah of Holocaust survivors to Eretz Yisrael  5)      Irina Voronovich (Minsk, Belarus) — The Occupied Territory of Belarus: Jewish Resistance and Judenrats  6)      Leonid Terushkin, Vadim Brodskij (Moscow, Russia) — Searching, researching and publishing of the letters, diaries and memories of the Holocaust period and World War II. Presentation of new books |
+| 11:00 – 11:20 | **Coffee break** |
+| 11:20 – 13:20 | **Session 6 (part I): Collective memory about the Holocaust, tolerance and xenophobia** 1)      Elizaveta Iakimova (Nizhni Novgorod, Russia) — Comparative analysis of advertising campaigns mentioning the theme of the Holocaust in Israel and the Baltic States  2)      Yuri Radchenko (Kharkiv, Ukraine) — Ukrainian Police in Ukrainian and Jewish Memory  3)      Irina Rebrova (Krasnodar, Russia) — Different Lives and One History. Social Memory about the Holocaust in the North Caucasus  4)      Natalia Burlakova, Ekaterina Oleshkevich (Moscow, Russia) — Socio-cultural and Psychological Mechanisms of Transgression of Holocaust Experience to Second Generation in Eastern Europe  5)      Ronaldas Račinskas (Vilnius, Lithuania) — Collective memory about the Holocaust: Reasons, Challenges and Perspectives  6)      Māris Ruks (Riga, Latvia) — Silenced truths: Anti-Semitism and its genesis in student fraternities in Latvia |
+| 13:20 – 14:20 | **Lunch break** |
+| 14:20 – 16:40 | **Session 6 (part II): Collective memory about the Holocaust, tolerance and xenophobia** 1)      Kobelyan Khachatur (Yerevan, Armenia) — Two approaches of preserving and dissemination of the Genocide memory  2)      Jekaterina Ivanova (Riga, Latvia) — Holocaust restitution: a big challenge for post-communist Europe  3)      Anna Susak (Lviv, Ukraine) — Lieux d’oubli: collective memory of the Holocaust in post-communist Lviv  4)      Vincenza Maugeri (Bologna, Italy) — Righteous Amongst the Nations in Emilia Romagna Region. An exhibition  5)      Natalia Lorens, Viktor Shapiro (Kaliningrad, Russia) — Holocaust memorials in Kaliningrad and Palmniken  6)      Mark Bernshtein (Minsk, Belarus) — Wikipedia and Holocaust  7)      Natalia Anisina (Moscow, Russia) — Russian Jewish Congress, Museum of Jewish Heritage and Holocaust | 

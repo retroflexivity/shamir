@@ -1,0 +1,37 @@
+---
+import '../../styles/globals.css';
+import SiteHead from '../../components/SiteHead.astro';
+import { EITC } from '../../components/eitc';
+import { getTranslations, defaultLocale, locales } from '../../i18n/translations';
+
+export async function getStaticPaths() {
+  // Only generate paths for non-default locales (default is handled by root eitc.astro)
+  return locales
+    .filter(locale => locale !== defaultLocale)
+    .map(locale => ({
+      params: { locale },
+    }));
+}
+
+const locale = Astro.params.locale as 'ru' | 'lv' | 'en';
+if (!locale || !locales.includes(locale)) {
+  return Astro.redirect('/eitc');
+}
+
+const t = getTranslations(locale);
+const title = t.eitcPageTitle;
+---
+
+<html lang={locale} class="">
+  <head>
+    <SiteHead title={title} />
+  </head>
+  <body class="bg-lightbg dark:bg-darkbg text-lightfg dark:text-darkfg transition-colors">
+    <EITC 
+      client:load
+      locale={locale}
+      translations={t}
+      currentPath={`/${locale}/eitc`}
+    />
+  </body>
+</html>

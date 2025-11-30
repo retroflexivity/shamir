@@ -3,26 +3,34 @@ import { getCollection } from 'astro:content';
 import '../styles/globals.css';
 import { HomePage } from '../components/HomePage';
 import SiteHead from '../components/SiteHead.astro';
+import { getTranslations, defaultLocale } from '../i18n/translations';
 
-const articles = (await getCollection('articles')).map(entry => {
-  const id = entry.data.id?.toString() || entry.slug;
-  return {
-    id,
-    title: entry.data.title,
-    image: entry.data.image,
-    tags: Array.isArray(entry.data.tags) ? entry.data.tags : (entry.data.tags ? [entry.data.tags] : []),
-    date: entry.data.date,
-    body: entry.body,
-    slug: id,
-  };
-});
+const locale = defaultLocale; // Root page is always default locale (ru)
+const t = getTranslations(locale as 'ru' | 'lv' | 'en');
+
+const allArticles = await getCollection('articles');
+const articles = allArticles
+  .filter(entry => entry.data.locale === locale)
+  .map(entry => {
+    const id = entry.data.id?.toString() || entry.slug;
+    return {
+      id,
+      title: entry.data.title,
+      image: entry.data.image,
+      tags: Array.isArray(entry.data.tags) ? entry.data.tags : (entry.data.tags ? [entry.data.tags] : []),
+      date: entry.data.date,
+      body: entry.body,
+      slug: id,
+      locale: entry.data.locale,
+    };
+  });
 ---
 
-<html lang="en" class="">
+<html lang={locale} class="">
   <head>
-    <SiteHead title="Главная" />
+    <SiteHead title={t.homeTitle} />
   </head>
   <body class="bg-lightbg dark:bg-darkbg transition-colors">
-    <HomePage client:load articles={articles} />
+    <HomePage client:load articles={articles} locale={locale} translations={t} currentPath="/" />
   </body>
 </html>

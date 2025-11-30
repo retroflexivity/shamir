@@ -4,16 +4,27 @@ import { Badge, Tag } from "./ui/badge";
 import { ArticleCard } from "./ui/card";
 import { Header } from "./Header";
 import type { Article } from "./types";
+import type { Translations, Locale } from "../i18n/translations";
+import { getLocalizedPath } from "../i18n/utils";
 
 export interface ArchivePageProps {
   articles: Article[];
   initialTag?: string;
+  locale?: Locale;
+  translations?: Translations;
+  currentPath?: string;
 }
 
 const priorityTags : Set<string> = new Set([
 ])
 
-export function ArchivePage({ articles, initialTag }: ArchivePageProps) {
+export function ArchivePage({ articles, initialTag, locale = 'ru', translations, currentPath }: ArchivePageProps) {
+  const t = translations;
+  if (!t) {
+    return <div>Loading...</div>;
+  }
+  
+  const archivePath = currentPath || getLocalizedPath('/archive', locale);
   const allTags = useMemo(() =>
     Array.from(new Set(articles.flatMap(a => a.tags || [])))
   , [articles]);
@@ -155,14 +166,14 @@ export function ArchivePage({ articles, initialTag }: ArchivePageProps) {
   return (
     <div className="text-lightfg dark:text-darkfg">
       <div className="mx-auto max-w-6xl sm:px-8">
-        <Header showBackButton={true}/>
+        <Header showBackButton={true} locale={locale} translations={t} currentPath={archivePath} />
         <div id="articles" className="flex flex-col items-center gap-6 mt-10">
-          <h1 className="text-3xl font-bold mb-4">Архив</h1>
+          <h1 className="text-3xl font-bold mb-4">{t.archive}</h1>
           <Input
             className="w-full max-w-xl focus:max-w-2xl light text-center text-xl transition-all duration-300 ease-in-out"
             value={searchValue}
             onChange={e => setSearchValue(e.target.value)}
-            placeholder="Искать"
+            placeholder={t.search}
             id="search-input"
           />
           <div
@@ -202,16 +213,16 @@ export function ArchivePage({ articles, initialTag }: ArchivePageProps) {
       </div>
       <div id="article-grid" className="grid mb-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {filtered.map((article, i) => (
-          <ArticleCard key={article.title + i} article={article} />
+          <ArticleCard key={article.title + i} article={article} locale={locale} />
         ))}
       </div>
       <div className="mx-auto max-w-6xl px-6">
         <footer className="pb-10 text-center">
         <hr className="max-w-xl mx-auto my-12 border-lightfg dark:border-darkfg"></hr>
-        <h2 className="text-xl mb-4">Общество Шамир</h2>
+        <h2 className="text-xl mb-4">{t.footerTitle}</h2>
         <div className="max-w-xl mx-auto grid grid-cols-1 md:grid-cols-2">
           <div>
-            <h3 className="text-lg underline">Связаться с нами:</h3>
+            <h3 className="text-lg underline">{t.contactUs}</h3>
             <p>
               <a href="mailto:shamir@shamir.lv">
                 shamir@shamir.lv
@@ -225,7 +236,7 @@ export function ArchivePage({ articles, initialTag }: ArchivePageProps) {
             </p>
           </div>
           <div>
-            <h3 className="text-lg underline">Пожертвовать:</h3>
+            <h3 className="text-lg underline">{t.donate}</h3>
             <p>
               Shamir Society<br />
               Reg Nr 40008083814<br />

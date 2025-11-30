@@ -1,0 +1,14 @@
+---
+import { defaultLocale, locales } from '../../i18n/translations';
+
+export async function getStaticPaths() {
+  return locales.map(locale => ({
+    params: { locale },
+  }));
+}
+
+const locale = Astro.params.locale as 'ru' | 'lv' | 'en';
+// Redirect from /[locale]/eitc-2 to /[locale]/eitc
+const redirectPath = locale === defaultLocale ? '/eitc' : `/${locale}/eitc`;
+return Astro.redirect(redirectPath, 301);
+---

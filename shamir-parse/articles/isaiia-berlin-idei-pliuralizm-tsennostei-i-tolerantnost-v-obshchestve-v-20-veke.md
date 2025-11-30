@@ -1,0 +1,28 @@
+---
+id: "116"
+title: "Исайя Берлин. Идеи, плюрализм ценностей и толерантность в обществе в 20 веке"
+image: "http://shamir.lv/wp-content/uploads/2016/03/berlin-200x170.jpg"
+tags: ['Фестиваль еврейской культуры 5771',]
+date: 2010-06-09
+oldUrl: http://shamir.lv/2010/06/09/%d0%b8%d1%81%d0%b0%d0%b9%d1%8f-%d0%b1%d0%b5%d1%80%d0%bb%d0%b8%d0%bd-%d0%b8%d0%b4%d0%b5%d0%b8-%d0%bf%d0%bb%d1%8e%d1%80%d0%b0%d0%bb%d0%b8%d0%b7%d0%bc-%d1%86%d0%b5%d0%bd%d0%bd%d0%be%d1%81%d1%82%d0%b5/
+---
+
+SIA  „Mistrus Media” и общество «Шамир» организует цикл лекций «Исайя Берлин. Идеи, плюрализм ценностей  и  толерантность  в  обществе в 20 веке». Лектор – др. Атис Закатистов.  Во время лекции будет показан фильм «Родившийся в Риге» о выдающемся  мыслителе  20  века сэре Исайе Берлине (06.06.1090, Рига — 05.11.1997, Оксфорд). После лекции – дискуссия.
+
+09.06.2010. 15:00 — Резекненская Высшая школа
+
+17.06.2010. 15:00 — Даугавпилсский Университет, 310 аудитория
+
+28.06.2010. 17:00 — Общество «Шамир», Стабу 63
+
+28.06.2010. 20:00 — Юрмала, санаторий «Яункемери»
+
+30.06.2010. 14:00 — Лиепая, Лиепайская Центральная Научная библиотека, ул. Малкас 4, 3 этаж
+
+Поддержка:
+
+Īslande,   Lihtenšteina   un  Norvēģija  Eiropas  
+ Ekonomikas  zonas  finanšu  instrumenta ietvaros un Latvijas valsts ar  
+ Sabiedrības   integrācijas   fonda   starpniecību   AS  Rietumu  Banka  
+ Lielbritānijas  vēstniecība  Latvijā  VBSIA Latvijas Televīzija Konrad  
+ Adenauer Shtiftung Rīgas Dome Valsts Kultūrkapitāla fonds 

@@ -2,12 +2,18 @@ import React, { useMemo } from "react";
 import { marked } from "marked";
 import { Header } from "./Header";
 import type { Article } from "./types";
+import type { Translations, Locale } from "../i18n/translations";
+import { getLocalizedPath } from "../i18n/utils";
 
 export interface ArticlePageProps {
   article: Article;
+  locale?: Locale;
+  translations?: Translations;
 }
 
-export function ArticlePage({ article }: ArticlePageProps) {
+export function ArticlePage({ article, locale = 'ru', translations }: ArticlePageProps) {
+  const t = translations;
+  const currentPath = article.slug ? getLocalizedPath(`/${article.slug}`, locale) : '/';
   function formatDate(dt: Date | string | undefined): string {
     if (!dt) return "";
     if (typeof dt === "string") {
@@ -88,7 +94,7 @@ export function ArticlePage({ article }: ArticlePageProps) {
 
   return (
     <div className="mx-auto max-w-6xl px-6 sm:px-16">
-      <Header showBackButton={true} />
+      <Header showBackButton={true} locale={locale} translations={t} currentPath={currentPath} />
 
       {article.image && (
         <img

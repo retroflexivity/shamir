@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import '../../styles/globals.css';
+import { ArticlePage } from '../../components/ArticlePage';
+import SiteHead from '../../components/SiteHead.astro';
+import { getTranslations, defaultLocale, locales } from '../../i18n/translations';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  const paths = [];
+  
+  for (const article of articles) {
+    const id = article.data.id?.toString() || article.slug;
+    const locale = article.data.locale || defaultLocale;
+    
+    // Only create paths for non-default locales (default locale is handled by root [slug].astro)
+    if (locale !== defaultLocale && locales.includes(locale)) {
+      paths.push({
+        params: { locale: locale, slug: id },
+        props: {
+          article: {
+            id,
+            title: article.data.title,
+            image: article.data.image,
+            tags: Array.isArray(article.data.tags) ? article.data.tags : (article.data.tags ? [article.data.tags] : []),
+            date: article.data.date,
+            body: article.body,
+            slug: id,
+            locale: locale,
+          },
+          locale: locale,
+        },
+      });
+    }
+  }
+  
+  return paths;
+}
+
+const { article, locale: pathLocale } = Astro.props;
+const locale = pathLocale || article.locale || defaultLocale;
+const t = getTranslations(locale as 'ru' | 'lv' | 'en');
+---
+
+<html lang={locale} class="">
+  <head>
+    <SiteHead title={article.title} />
+  </head>
+  <body class="bg-lightbg dark:bg-darkbg text-lightfg dark:text-darkfg transition-colors">
+    <ArticlePage client:load article={article} locale={locale} translations={t} />
+  </body>
+</html>
