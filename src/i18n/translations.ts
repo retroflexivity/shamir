@@ -153,7 +153,7 @@ export const translations: Record<Locale, Translations> = {
     publicationsTooltip: 'krievu, latviešu, angļu, vācu, spāņu, franču un ebreju.',
     shopLink: 'mūsu veikalā',
     eitcTitle: 'Eiropas starptautiskais tolerances centrs',
-    eitcSubtitle: 'Glābājam atmiņu',
+    eitcSubtitle: 'Glabājam atmiņu',
     eitcLearnMore: 'Uzzināt vairāk',
     contactUs: 'Sazināties ar mums:',
     donate: 'Ziedot:',

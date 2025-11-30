@@ -166,7 +166,7 @@
       @apply grid grid-cols-3 gap-4 mb-6;
       height: 300px;
 
-      img {
+      .item {
         @apply h-full object-cover rounded-lg;
         min-width: 0;
       }

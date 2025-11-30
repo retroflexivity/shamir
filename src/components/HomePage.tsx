@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { ArticleCard } from "./ui/card";
+import { ArticleCard, ImageCard } from "./ui/card";
 import { Header } from "./Header";
 import { Tooltip } from "./ui/tooltip";
 import type { Article } from "./types";
@@ -162,9 +162,9 @@ export function HomePage({ articles, locale = 'ru', translations, currentPath = 
         </a>
         <p className="subtitle">{t.eitcSubtitle}</p>
         <div className="image-grid">
-          <img src="/images/2020/04/2017.04.27.Hol-Jipsy_002-1024x680.jpg" alt="" />
-          <img src="/images/2020/04/IMG_5226.jpg" alt="" />
-          <img src="/images/2020/04/2017.05.14.Hol-Gipsy_028-1024x794.jpg" alt="" />
+            <ImageCard src="/images/2020/04/2017.04.27.Hol-Jipsy_002-1024x680.jpg" alt="eitc 1" />
+            <ImageCard src="/images/2020/04/IMG_5226.jpg" alt="eitc 2" />
+            <ImageCard src="/images/2020/04/2017.05.14.Hol-Gipsy_028-1024x794.jpg" alt="eitc 3" />
         </div>
       </section>
       

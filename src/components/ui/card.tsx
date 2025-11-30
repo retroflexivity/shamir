@@ -16,6 +16,32 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, ...props 
 Card.displayName = "Card"
 export { Card }
 
+export interface ImageWithShaderProps {
+  src: string;
+  alt: string;
+}
+
+function ImageWithShader({ src, alt }: ImageWithShaderProps) {
+  return (
+    <div className="absolute inset-0">
+      <img 
+        src={src} 
+        alt={alt} 
+        className="w-full h-full object-cover object-center transition grayscale group-hover:grayscale-0 brightness-[0.4] group-hover:brightness-[0.6]" 
+      />
+      <div className="absolute inset-0 bg-darkbg mix-blend-screen opacity-50 group-hover:opacity-0 transition-opacity" />
+    </div>
+  );
+}
+
+export function ImageCard({ src, alt} : ImageWithShaderProps) {
+  return (
+    <Card className="relative group">
+      <ImageWithShader src={src} alt={alt} />
+    </Card>
+  )
+}
+
 export interface ArticleCardProps {
   article: Article;
   href?: string;
@@ -44,10 +70,7 @@ export function ArticleCard({ article, href, locale = 'ru' }: ArticleCardProps) 
     >
       <Card className="article-card group relative h-72 sm:h-72 md:h-80 lg:h-96 overflow-hidden bg-darkbg transition p-0 flex cursor-pointer">
         {article.image && (
-          <div className="absolute inset-0">
-            <img src={article.image} alt={article.title} className="w-full h-full object-cover object-center transition scale-105 grayscale group-hover:grayscale-0 brightness-[0.4] group-hover:brightness-[0.6]" />
-            <div className="absolute inset-0 bg-darkbg mix-blend-screen opacity-50 group-hover:opacity-0 transition-opacity" />
-          </div>
+          <ImageWithShader src={article.image} alt={article.title} />
         )}
         <div className="relative z-10 w-full h-full flex flex-col justify-end p-5">
           <h2 className="text-white/90 [text-shadow:_0_2px_8px_rgb(0_0_0_/_0.6),_0_1px_4px_rgb(0_0_0_/_0.8)] text-xl mb-1 line-clamp-6 uppercase">{article.title}</h2>
