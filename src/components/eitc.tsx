@@ -48,7 +48,7 @@ export function EITC({
             {sectionIndex > 0 && (
             <hr className="max-w-xl mx-auto my-12 border-lightfg/50 dark:border-darkfg/50 border"></hr>
             )}
-            <section className="my-8 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <section className="my-8 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
               {isSecondSection ? (
                 <>
                   <div className="md:col-span-2 prose dark:prose-invert max-w-none">
@@ -58,8 +58,8 @@ export function EITC({
                       </p>
                     ))}
                   </div>
-                  <div className="md:col-span-1">
-                    <div className="sticky top-8">
+                  <div className="md:col-span-1 flex items-center justify-center">
+                    <div className="sticky top-8 w-full">
                       <ImageCarousel 
                         images={section.images}
                         autoScrollInterval={scrollInterval}
@@ -69,8 +69,8 @@ export function EITC({
                 </>
               ) : (
                 <>
-                  <div className="md:col-span-1">
-                    <div className="sticky top-8">
+                  <div className="md:col-span-1 flex items-center justify-center">
+                    <div className="sticky top-8 w-full">
                       <ImageCarousel 
                         images={section.images}
                         autoScrollInterval={scrollInterval}

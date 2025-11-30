@@ -30,7 +30,7 @@ export function ImageCarousel({
         <img 
           src={images[0]} 
           alt="" 
-          className="w-full h-auto rounded-lg shadow-md object-contain"
+          className="w-full h-auto rounded-lg object-contain"
           style={{ maxHeight: 'none' }}
         />
       </div>
@@ -39,7 +39,7 @@ export function ImageCarousel({
 
   return (
     <div className={`relative ${className}`}>
-      <div className="relative overflow-hidden rounded-lg shadow-md">
+      <div className="relative overflow-hidden rounded-lg">
         <div 
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
