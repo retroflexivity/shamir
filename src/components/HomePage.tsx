@@ -17,6 +17,7 @@ export interface HomePageProps {
 function getProjectLinks(t: Translations): {href: string, label: string}[] {
   return [
     { href: "https://www.rglhm.lv/", label: t.visitMuseum },
+    { href: "https://www.rgm.lv/", label: t.museumStories },
     { href: "https://www.zahor.lv/", label: t.supportMemory },
   ];
 }
@@ -24,6 +25,7 @@ function getProjectLinks(t: Translations): {href: string, label: string}[] {
 function getSections(t: Translations): Map<string, { title: string; subtitle: string; tag: string }> {
   return new Map([
     ['education', { title: t.education, subtitle: t.educationSubtitle, tag: t.education }],
+    ['research', { title: t.research, subtitle: t.researchSubtitle, tag: t.research }],
     ['exhibitions', { title: t.exhibitions, subtitle: t.exhibitionsSubtitle, tag: t.exhibitions }],
     ['concerts', { title: t.concerts, subtitle: t.concertsSubtitle, tag: t.concerts }],
   ]);
@@ -82,8 +84,9 @@ export function HomePage({ articles, locale = 'ru', translations, currentPath = 
       />
       <div id="about" className="flex flex-col items-center gap-2 mb-16">
         <div className="sm:mx-8 md:mx-16 text-center font-serif text-lightaccent dark:text-darkaccent shine-light dark:shine-dark mb-6">
-          <p className="text-2xl">{t.aboutText1}</p>
-          <p className="text-xl mb-0">{t.aboutText2}</p>
+          <p className="text-2xl">{t.aboutTextSlogan}</p>
+          <p className="text-lg italic">{t.aboutTextFounded}</p>
+          <p className="text-xl mb-0">{t.aboutTextSite}</p>
         </div>
         <div className="text-xl grid gap-10 px-4 mb-6">
           {projectLinks.map((link) => (
@@ -121,7 +124,7 @@ export function HomePage({ articles, locale = 'ru', translations, currentPath = 
                 <span className="text-xl underline decoration-dotted">{t.publicationsText7}</span>
               </Tooltip>
             </div>
-            <div className="max-w-xs text-xl leading-tight">{t.publicationsText8}<br/>{t.publicationsText9}<br/><a href="https://shamirshop.lv" className="underline">{t.shopLink}</a></div>
+            <div className="max-w-xs text-xl leading-tight">{t.publicationsText8}<br/>{t.publicationsText9}<br/>{t.shopLink}</div>
           </div>
       </section>
 
@@ -162,9 +165,9 @@ export function HomePage({ articles, locale = 'ru', translations, currentPath = 
         </a>
         <p className="subtitle">{t.eitcSubtitle}</p>
         <div className="image-grid">
-            <ImageCard src="/images/2020/04/2017.04.27.Hol-Jipsy_002-1024x680.jpg" alt="eitc 1" />
+            <ImageCard src="/images/2020/04/IMG_5242.jpg" alt="eitc 1" />
             <ImageCard src="/images/2020/04/IMG_5226.jpg" alt="eitc 2" />
-            <ImageCard src="/images/2020/04/2017.05.14.Hol-Gipsy_028-1024x794.jpg" alt="eitc 3" />
+            <ImageCard src="/images/2020/04/2.jpg" alt="eitc 3" />
         </div>
       </section>
       
@@ -180,8 +183,8 @@ export function HomePage({ articles, locale = 'ru', translations, currentPath = 
               </a>
             </p>
             <p>
-              Shamir Society<br />
-              Turgeneva 2<br />
+              Biedrība Šamir<br />
+              Lastādijas 14a<br />
               Riga, LV-1050<br />
               Latvia
             </p>
@@ -189,7 +192,7 @@ export function HomePage({ articles, locale = 'ru', translations, currentPath = 
           <div>
             <h4>{t.donate}</h4>
             <p>
-              Shamir Society<br />
+              Biedrība Šamir<br />
               Reg Nr 40008083814<br />
               SEB Banka<br />
               SWIFT UNLALV2X<br />

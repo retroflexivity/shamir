@@ -33,13 +33,44 @@ export function ArchivePage({ articles, initialTag, locale = 'ru', translations,
   // Always start with empty set to avoid hydration mismatch
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
   const normalize = (text: string) => text.toLowerCase().replace(/ё/g, "е");
+  
+  // Strip markdown syntax to get plain text for searching
+  const stripMarkdown = (text: string | undefined): string => {
+    if (!text) return "";
+    return text
+      // Remove images: ![](url) or ![alt](url)
+      .replace(/!\[([^\]]*)\]\([^\)]+\)/g, "")
+      // Remove links: [text](url) but keep the text
+      .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1")
+      // Remove headers: # Header
+      .replace(/^#{1,6}\s+/gm, "")
+      // Remove bold/italic: **text** or *text*
+      .replace(/\*\*([^\*]+)\*\*/g, "$1")
+      .replace(/\*([^\*]+)\*/g, "$1")
+      // Remove code blocks: ```code``` or `code`
+      .replace(/```[\s\S]*?```/g, "")
+      .replace(/`([^`]+)`/g, "$1")
+      // Remove horizontal rules
+      .replace(/^---+$/gm, "")
+      // Remove list markers: - item or * item or 1. item
+      .replace(/^[\s]*[-*+]\s+/gm, "")
+      .replace(/^[\s]*\d+\.\s+/gm, "")
+      // Remove blockquotes: > text
+      .replace(/^>\s+/gm, "")
+      // Clean up extra whitespace
+      .replace(/\n+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  };
 
-  // Set tag from prop or URL after mount (client-side only)
+  // Set tag and search from prop or URL after mount (client-side only)
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    
+    // Handle tag
     const tag = (initialTag && initialTag.trim() !== '') 
       ? initialTag 
       : (() => {
-          const params = new URLSearchParams(window.location.search);
           const urlTag = params.get('tag');
           return urlTag ? decodeURIComponent(urlTag) : null;
         })();
@@ -47,9 +78,15 @@ export function ArchivePage({ articles, initialTag, locale = 'ru', translations,
     if (tag) {
       setSelectedTags(new Set([tag]));
     }
+    
+    // Handle search query
+    const searchQuery = params.get('search');
+    if (searchQuery) {
+      setSearchValue(decodeURIComponent(searchQuery));
+    }
   }, [initialTag]);
 
-  // Update selected tags when URL changes (e.g., from back/forward navigation)
+  // Update selected tags and search when URL changes (e.g., from back/forward navigation)
   useEffect(() => {
     const handleLocationChange = () => {
       const params = new URLSearchParams(window.location.search);
@@ -58,6 +95,13 @@ export function ArchivePage({ articles, initialTag, locale = 'ru', translations,
         setSelectedTags(new Set([decodeURIComponent(tag)]));
       } else {
         setSelectedTags(new Set());
+      }
+      
+      const searchQuery = params.get('search');
+      if (searchQuery) {
+        setSearchValue(decodeURIComponent(searchQuery));
+      } else {
+        setSearchValue("");
       }
     };
     
@@ -127,7 +171,12 @@ export function ArchivePage({ articles, initialTag, locale = 'ru', translations,
 
   const filtered = useMemo(() => {
     const filteredArticles = articles.filter(article => {
-      const matchText = normalize(article.title).includes(normalize(searchValue));
+      const normalizedSearch = normalize(searchValue);
+      const matchTitle = normalize(article.title).includes(normalizedSearch);
+      const matchBody = article.body 
+        ? normalize(stripMarkdown(article.body)).includes(normalizedSearch)
+        : false;
+      const matchText = matchTitle || matchBody;
       // const matchTag = selectedTags.size === 0 || (article.tags||[]).some(tag => selectedTags.has(tag));
       const matchTag = selectedTags.size === 0 || [...selectedTags].every(tag => (article.tags||[]).includes(tag));
       return matchText && matchTag;

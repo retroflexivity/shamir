@@ -20,9 +20,11 @@ export interface Translations {
   
   // Home page
   homeTitle: string;
-  aboutText1: string;
-  aboutText2: string;
+  aboutTextSlogan: string;
+  aboutTextFounded: string;
+  aboutTextSite: string;
   visitMuseum: string;
+  museumStories: string;
   supportMemory: string;
   allNews: string;
   publications: string;
@@ -51,6 +53,8 @@ export interface Translations {
   // Sections
   education: string;
   educationSubtitle: string;
+  research: string;
+  researchSubtitle: string;
   exhibitions: string;
   exhibitionsSubtitle: string;
   concerts: string;
@@ -58,17 +62,18 @@ export interface Translations {
   
   // EITC page
   eitcPageTitle: string;
-  eitcPageTitle: string;
   eitcSections: EITCSection[];
 }
 
 export const translations: Record<Locale, Translations> = {
   ru: {
-    backToHome: '← Вернуться на главную',
+    backToHome: 'Вернуться на главную',
     homeTitle: 'Главная',
-    aboutText1: 'Больше двадцати лет мы сохраняем и исследуем память об истории евреев Латвии.',
-    aboutText2: 'Основная деятельность Шамира сейчас — музей Рижского гетто. А это сайт-архив, где можно узнать о наших прошлых проектах.',
+    aboutTextSlogan: 'Больше двадцати лет мы сохраняем и исследуем память об истории евреев Латвии.',
+    aboutTextFounded: 'Общество Шамир было основано и получило статус благотворительной организации в 2004 году.',
+    aboutTextSite: 'Основная деятельность Шамира сейчас — музей Рижского гетто. На этом сайте можно узнать о наших прошлых и текущих проектах.',
     visitMuseum: 'На сайт музея Рижского гетто',
+    museumStories: 'Истории Рижского гетто',
     supportMemory: 'Поддержать память жертв Холокоста',
     allNews: 'Все новости в архиве',
     publications: 'Публикации',
@@ -84,7 +89,7 @@ export const translations: Record<Locale, Translations> = {
     publicationsTooltip: 'русском, латышском, английском, немецком, испанском, французском и иврите.',
     shopLink: 'нашем магазине',
     eitcTitle: 'Европейский международный центр толерантности',
-    eitcSubtitle: 'Сохраняем память',
+    eitcSubtitle: 'Изучаем историю Холокоста и современные формы ненависти. Предотвращаем радикализм. Укрепляем демократию.',
     eitcLearnMore: 'Узнать больше',
     contactUs: 'Связаться с нами:',
     donate: 'Пожертвовать:',
@@ -93,8 +98,10 @@ export const translations: Record<Locale, Translations> = {
     search: 'Искать',
     education: 'Образование',
     educationSubtitle: 'Более 2000 участников, включая школьников и студентов',
+    research: 'Исследования',
+    researchSubtitle: 'A research subtitle',
     exhibitions: 'Выставки',
-    exhibitionsSubtitle: 'В музее Рижского гетто и не только',
+    exhibitionsSubtitle: 'В музее Рижского гетто и Холокоста в Латвии и не только',
     concerts: 'Концерты',
     concertsSubtitle: 'Концерты и фестивали еврейской музыки',
     eitcPageTitle: 'Европейский международный центр толерантности',
@@ -134,36 +141,40 @@ export const translations: Record<Locale, Translations> = {
     ],
   },
   lv: {
-    backToHome: '← Atgriezties uz sākumlapu',
+    backToHome: 'Atgriezties uz sākumlapu',
     homeTitle: 'Sākums',
-    aboutText1: 'Vairāk nekā divdesmit gadus mēs saglabājam un pētām ebreju vēsturi Latvijā.',
-    aboutText2: 'Šamīra galvenā darbība tagad ir Rīgas geto muzejs. Šis ir arhīva vietne, kur var uzzināt par mūsu pagātnes projektiem.',
+    aboutTextSlogan: 'Vairāk nekā divdesmit gadus mēs saglabājam un pētām ebreju vēsturi Latvijā.',
+    aboutTextFounded: 'Biedrība Šamir tika dibināta un ieguva labdarības organizācijas statusu 2004. gadā.',
+    aboutTextSite: 'Šamira galvenā darbība tagad ir Rīgas geto muzejs. Šajā vietnē var uzzināt par mūsu pagātnes un tagadnes projektiem.',
     visitMuseum: 'Uz Rīgas geto muzeja vietni',
+    museumStories: 'Rīgas geto stāsti',
     supportMemory: 'Atbalstīt Holokausta upuru piemiņu',
     allNews: 'Visas ziņas arhīvā',
     publications: 'Publikācijas',
     publicationsText1: 'mums',
-    publicationsText2: 'izdots',
-    publicationsText3: 'grāmatu,',
-    publicationsText4: 'katalogu,',
-    publicationsText5: 'kalendāru',
+    publicationsText2: 'izdoti',
+    publicationsText3: 'grāmatas,',
+    publicationsText4: 'katalogi,',
+    publicationsText5: 'kalendāri',
     publicationsText7: 'valodās,',
     publicationsText8: 'kurus var',
     publicationsText9: 'iegādāties',
     publicationsTooltip: 'krievu, latviešu, angļu, vācu, spāņu, franču un ebreju.',
     shopLink: 'mūsu veikalā',
     eitcTitle: 'Eiropas starptautiskais tolerances centrs',
-    eitcSubtitle: 'Glabājam atmiņu',
+    eitcSubtitle: 'Pētījam Holokosta vēsturi un mūsdienīgas naida formas. Novēršam radikalismu. Stiprinām demokrātiju.',
     eitcLearnMore: 'Uzzināt vairāk',
     contactUs: 'Sazināties ar mums:',
     donate: 'Ziedot:',
-    footerTitle: 'Šamīra biedrība',
+    footerTitle: 'Biedrība Šamir',
     archive: 'Arhīvs',
     search: 'Meklēt',
     education: 'Izglītība',
     educationSubtitle: 'Vairāk nekā 2000 dalībnieku, ieskaitot skolēnus un studentus',
+    research: 'Pētījumi',
+    researchSubtitle: 'A research subtitle',
     exhibitions: 'Izstādes',
-    exhibitionsSubtitle: 'Rīgas geto muzejā un ne tikai',
+    exhibitionsSubtitle: 'Rīgas geto un Latvijas Holokosta muzejā un ne tikai',
     concerts: 'Koncerti',
     concertsSubtitle: 'Koncerti un ebreju mūzikas festivāli',
     eitcPageTitle: 'Eiropas starptautiskais tolerances centrs',
@@ -202,11 +213,13 @@ export const translations: Record<Locale, Translations> = {
     ],
   },
   en: {
-    backToHome: '← Back to home',
+    backToHome: 'Back to home',
     homeTitle: 'Home',
-    aboutText1: 'For more than twenty years, we have been preserving and researching the history of Jews in Latvia.',
-    aboutText2: 'Shamir\'s main activity now is the Riga Ghetto Museum. This is an archive site where you can learn about our past projects.',
+    aboutTextSlogan: 'For more than twenty years, we have been preserving and researching the history of Jews in Latvia.',
+    aboutTextFounded: 'Shamir Society was founded and received charity status in 2004.',
+    aboutTextSite: 'Shamir\'s main activity now is the Riga Ghetto Museum. On this site, you can learn about our past and current projects.',
     visitMuseum: 'Visit the Riga Ghetto Museum website',
+    museumStories: 'Stories of the Ghetto',
     supportMemory: 'Support the memory of Holocaust victims',
     allNews: 'All news in the archive',
     publications: 'Publications',
@@ -220,9 +233,9 @@ export const translations: Record<Locale, Translations> = {
     publicationsText8: 'which can be',
     publicationsText9: 'purchased',
     publicationsTooltip: 'Russian, Latvian, English, German, Spanish, French, and Hebrew.',
-    shopLink: 'our shop',
+    shopLink: 'in our shop',
     eitcTitle: 'European International Tolerance Center',
-    eitcSubtitle: 'Protecting the memory',
+    eitcSubtitle: 'Studying the history of Holocaust and contemporary forms of hatred. Preventing radicalism. Strenghtening democracy.',
     eitcLearnMore: 'Learn more',
     contactUs: 'Contact us:',
     donate: 'Donate:',
@@ -231,8 +244,10 @@ export const translations: Record<Locale, Translations> = {
     search: 'Search',
     education: 'Education',
     educationSubtitle: 'More than 2000 participants, including schoolchildren and students',
+    research: 'Research',
+    researchSubtitle: 'A research subtitle',
     exhibitions: 'Exhibitions',
-    exhibitionsSubtitle: 'At the Riga Ghetto Museum and beyond',
+    exhibitionsSubtitle: 'At the Riga Ghetto and Latvian Holocaust Museum and beyond',
     concerts: 'Concerts',
     concertsSubtitle: 'Concerts and festivals of Jewish music',
     eitcPageTitle: 'European international tolerance center',
