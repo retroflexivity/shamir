@@ -9,7 +9,7 @@ tags:
   - Festivals
 oldUrl: >-
   http://shamir.lv/2011/06/04/%d1%84%d1%83%d1%82%d0%b1%d0%be%d0%bb%d1%8c%d0%bd%d1%8b%d0%b9-%d0%bc%d0%b0%d1%82%d1%87-%d0%bb%d0%b0%d1%82%d0%b2%d0%b8%d1%8f-%d0%b8%d0%b7%d1%80%d0%b0%d0%b8%d0%bb%d1%8c-%d0%b2-%d0%bf%d0%b0%d0%bc%d1%8f/?lang=en
-image: '/images/2016/03/Holocaust-319x343.jpg'
+image: '/images/258.jpg'
 ---
 **EURO 2012 Qualification play Latvia-Israel will take place at SKONTO stadium, Riga on June 04, 2011 at 19:30. According to the initiative of Association “Shamir” the play is dedicated to the memory of Jewish sportsmen killed in Latvia during the Holocaust. The initiative was supported by Latvian Football Federation and UEFA.**
 
