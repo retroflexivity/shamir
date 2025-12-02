@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+
+// Build redirect map from articles
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  const pathMap = new Map<string, string>(); // Use Map to deduplicate paths
+
+  for (const article of articles) {
+    // Process any article that has an oldUrl and redirect to its English version
+    if (article.data.oldUrl) {
+      const oldUrl = article.data.oldUrl.trim();
+      const articleId = article.data.id?.toString() || article.slug;
+
+      try {
+        // Parse the URL to extract the path
+        const url = new URL(oldUrl);
+        // Get the pathname (e.g., /2015/09/07/exhibition-missing-identity/)
+        // Decode URL-encoded paths
+        let path = decodeURIComponent(url.pathname);
+        
+        // Remove leading slash and trailing slash if present
+        path = path.replace(/^\/+|\/+$/g, '');
+        
+        // Map the old path to the new English article path
+        if (path) {
+          // Store both with and without trailing slash
+          pathMap.set(path, `/en/${articleId}`);
+          if (!path.endsWith('/')) {
+            pathMap.set(`${path}/`, `/en/${articleId}`);
+          }
+        }
+      } catch (e) {
+        // If URL parsing fails, try to extract path manually
+        // Handle cases where oldUrl might not be a full URL
+        const urlMatch = oldUrl.match(/https?:\/\/[^\/]+(\/.*?)(?:\?|$)/);
+        if (urlMatch) {
+          try {
+            let path = decodeURIComponent(urlMatch[1]);
+            path = path.replace(/^\/+|\/+$/g, '');
+            if (path) {
+              pathMap.set(path, `/en/${articleId}`);
+              if (!path.endsWith('/')) {
+                pathMap.set(`${path}/`, `/en/${articleId}`);
+              }
+            }
+          } catch (decodeError) {
+            // If decoding fails, use the path as-is
+            let path = urlMatch[1];
+            path = path.replace(/^\/+|\/+$/g, '');
+            if (path) {
+              pathMap.set(path, `/en/${articleId}`);
+              if (!path.endsWith('/')) {
+                pathMap.set(`${path}/`, `/en/${articleId}`);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Convert Map to array of paths
+  const paths: Array<{ params: { path: string }, props: { redirectTo: string } }> = [];
+  for (const [path, redirectTo] of pathMap.entries()) {
+    paths.push({
+      params: { path },
+      props: { redirectTo },
+    });
+  }
+
+  return paths;
+}
+
+const { redirectTo } = Astro.props;
+
+// Perform server-side redirect using Astro.redirect()
+return Astro.redirect(redirectTo, 301);
+---
