@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "NODE_OPTIONS=--max-old-space-size=1536 astro build",
+    "build:low-mem": "NODE_OPTIONS=--max-old-space-size=1024 NODE_NO_WARNINGS=1 astro build",
     "preview": "astro preview",
     "astro": "astro",
     "scrape-translations": "node scripts/scrape-translations.js"

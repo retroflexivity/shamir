@@ -13,4 +13,30 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  vite: {
+    build: {
+      // Reduce memory usage during build
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          // Manual chunking to reduce memory pressure
+          manualChunks: (id) => {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom')) {
+                return 'react-vendor';
+              }
+              if (id.includes('marked')) {
+                return 'marked-vendor';
+              }
+              return 'vendor';
+            }
+          },
+        },
+      },
+    },
+    // Reduce worker memory usage
+    worker: {
+      format: 'es',
+    },
+  },
 });
