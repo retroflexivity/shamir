@@ -33,9 +33,20 @@ jobs:
           path: dist/
           retention-days: 7
 
-      # Option 1: Deploy via SCP (only requires SSH, no rsync needed)
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # Deployment will fail if secrets are not configured - this is expected
+    # Configure secrets in Settings > Secrets and variables > Actions when ready
+    
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
       - name: Clean remote directory
-        if: ${{ secrets.DEPLOY_HOST }}
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.DEPLOY_HOST }}
@@ -52,7 +63,6 @@ jobs:
             fi
 
       - name: Deploy to server via SCP
-        if: ${{ secrets.DEPLOY_HOST }}
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.DEPLOY_HOST }}
