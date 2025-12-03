@@ -61,13 +61,19 @@ export function Header({ showBackButton = false, locale = 'ru', translations, cu
   }, [isSearchExpanded, searchQuery]);
   
   return (
-    <header className="flex justify-between items-center mb-6 mt-8 overflow-x-hidden max-w-full">
-      <div className="flex items-center gap-4 min-w-0">
+    <header className="flex justify-between items-center mb-6 mt-8 pb-2 overflow-x-hidden max-w-full">
+      <div className={`flex items-center ${
+        isSearchExpanded ? 'w-full md:w-auto md:gap-4 gap-0' : 'gap-4'
+      } min-w-0 overflow-visible`}>
         {isHomepage && t && (
           <form
             ref={searchFormRef}
             onSubmit={handleSearchSubmit}
-            className="flex items-center gap-2 flex-shrink-0"
+            className={`btn h-10 transition-all duration-300 ease-in-out sm:mr-4 ${
+              isSearchExpanded 
+                ? 'w-full sm:w-auto sm:min-w-[300px] min-w-0 md:flex-shrink-0' 
+                : 'w-10 h-10 p-0 min-w-[2.5rem] flex-shrink-0'
+            } flex items-center justify-center overflow-hidden relative`}
             onClick={(e) => {
               if (!isSearchExpanded) {
                 e.preventDefault();
@@ -75,92 +81,86 @@ export function Header({ showBackButton = false, locale = 'ru', translations, cu
               }
             }}
           >
-            <div
-              className={`btn h-10 transition-all duration-300 ease-in-out ${
-                isSearchExpanded 
-                  ? 'w-48 sm:w-64 md:w-80 min-w-0 max-w-[calc(100vw-8rem)]'
-                  : 'w-10 h-10 p-0 min-w-[2.5rem]'
-              } flex items-center justify-center overflow-hidden relative`}
-            >
-              {isSearchExpanded ? (
-                <>
-                  <input
-                    ref={searchInputRef}
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder={t.search}
-                    className="w-full bg-transparent border-none outline-none text-lightfg dark:text-darkfg placeholder-lightfg/60 dark:placeholder-darkfg/60 px-2 pr-10"
-                    onClick={(e) => e.stopPropagation()}
-                    onBlur={(e) => {
-                      // Don't collapse if there's text
-                      if (!searchQuery.trim()) {
-                        // Small delay to allow form submission to fire first
-                        setTimeout(() => {
-                          if (document.activeElement !== e.target) {
-                            setIsSearchExpanded(false);
-                          }
-                        }, 200);
-                      }
-                    }}
-                  />
-                  <button
-                    type="submit"
-                    className="absolute right-2 p-1.5 rounded-full hover:bg-white/20 dark:hover:bg-white/10 transition-colors flex items-center justify-center"
-                    onClick={(e) => e.stopPropagation()}
-                    aria-label={t.search}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      />
-                    </svg>
-                  </button>
-                </>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 flex-shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+            {isSearchExpanded ? (
+              <>
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={t.search}
+                  className="w-full bg-transparent border-none outline-none text-lightfg dark:text-darkfg placeholder-lightfg/60 dark:placeholder-darkfg/60 px-2 pr-10"
+                  onClick={(e) => e.stopPropagation()}
+                  onBlur={(e) => {
+                    // Don't collapse if there's text
+                    if (!searchQuery.trim()) {
+                      // Small delay to allow form submission to fire first
+                      setTimeout(() => {
+                        if (document.activeElement !== e.target) {
+                          setIsSearchExpanded(false);
+                        }
+                      }, 200);
+                    }
+                  }}
+                />
+                <button
+                  type="submit"
+                  className="absolute right-2 p-1.5 rounded-full hover:bg-white/20 dark:hover:bg-white/10 transition-colors flex items-center justify-center"
+                  onClick={(e) => e.stopPropagation()}
                   aria-label={t.search}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              )}
-            </div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </button>
+              </>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 flex-shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-label={t.search}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            )}
           </form>
         )}
-        {showBackButton && t && !isSearchExpanded ? (
+        {showBackButton && t && (
           <a
             href={backHref}
-            className="btn w-auto hidden sm:inline-flex"
+            className={`btn w-auto shadow-md ${
+              isSearchExpanded ? 'hidden sm:inline-flex' : 'hidden sm:inline-flex'
+            }`}
           >
             {t.backToHome}
           </a>
-        ) : null}
+        )}
       </div>
-      {!isSearchExpanded && (
-        <div className="flex items-center gap-4 flex-shrink-0">
-          {t && <LanguageSwitcher currentLocale={locale} currentPath={currentPath} />}
-          <ThemeToggle key="theme-toggle" />
-        </div>
-      )}
+      <div className={`flex items-center gap-4 flex-shrink-0 ${
+        isSearchExpanded ? 'hidden sm:flex' : ''
+      }`}>
+        {t && <LanguageSwitcher currentLocale={locale} currentPath={currentPath} />}
+        <ThemeToggle key="theme-toggle" />
+      </div>
     </header>
   );
 }

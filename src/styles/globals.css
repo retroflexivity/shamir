@@ -132,7 +132,7 @@
   }
 
   .btn {
-    @apply inline-flex px-4 py-2.5 items-center justify-center font-medium font-sans no-underline transition-colors bg-white/40 dark:bg-white/10 rounded-full shadow-lg hover:bg-white/90 dark:hover:bg-white/20 focus:outline-lightfg placeholder-lightfg dark:placeholder-darkfg
+    @apply inline-flex px-4 py-2.5 items-center justify-center font-medium font-sans no-underline transition-colors bg-white/40 dark:bg-white/10 rounded-full shadow-lg hover:bg-white/60 dark:hover:bg-white/20 focus:outline-lightfg placeholder-lightfg dark:placeholder-darkfg
   }
 
   .btn-sm {
