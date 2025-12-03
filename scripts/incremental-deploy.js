@@ -28,11 +28,43 @@ if (!DEPLOY_HOST || !DEPLOY_USER || !DEPLOY_SSH_KEY || !DEPLOY_REMOTE_PATH) {
 }
 
 // Write SSH key to temporary file
+// GitHub secrets may have issues with newlines, so we ensure proper formatting
 const sshKeyPath = path.join(__dirname, '.deploy_key');
-fs.writeFileSync(sshKeyPath, DEPLOY_SSH_KEY, { mode: 0o600 });
+
+// Normalize the SSH key: trim whitespace, normalize line endings, ensure trailing newline
+let formattedKey = DEPLOY_SSH_KEY.trim();
+// Replace Windows line endings with Unix line endings
+formattedKey = formattedKey.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+// Ensure the key ends with a newline (required for SSH)
+if (!formattedKey.endsWith('\n')) {
+  formattedKey += '\n';
+}
+
+// Write the key file with proper permissions
+fs.writeFileSync(sshKeyPath, formattedKey, { mode: 0o600, encoding: 'utf8' });
+
+// Verify the key file was written correctly
+if (!fs.existsSync(sshKeyPath)) {
+  console.error('Failed to create SSH key file');
+  process.exit(1);
+}
+
+// Verify file permissions (should be 600)
+const stats = fs.statSync(sshKeyPath);
+const mode = stats.mode & parseInt('777', 8);
+if (mode !== 0o600) {
+  // Try to fix permissions
+  fs.chmodSync(sshKeyPath, 0o600);
+}
+
+// Clean up on exit
 process.on('exit', () => {
-  if (fs.existsSync(sshKeyPath)) {
-    fs.unlinkSync(sshKeyPath);
+  try {
+    if (fs.existsSync(sshKeyPath)) {
+      fs.unlinkSync(sshKeyPath);
+    }
+  } catch (error) {
+    // Ignore cleanup errors
   }
 });
 
@@ -106,6 +138,33 @@ function getRemoteFileChecksums() {
   }
 }
 
+// Test SSH connection
+function testSSHConnection() {
+  try {
+    const command = sshCmd('echo "SSH connection test successful"');
+    execSync(command, { stdio: 'pipe', shell: '/bin/bash', timeout: 10000 });
+    return true;
+  } catch (error) {
+    console.error('SSH connection test failed:', error.message);
+    if (error.stderr) {
+      const stderr = error.stderr.toString();
+      console.error('SSH error output:', stderr);
+      if (stderr.includes('Load key')) {
+        console.error('\nThe SSH key file appears to be invalid or corrupted.');
+        console.error('Please verify that DEPLOY_SSH_KEY secret contains the complete private key.');
+        console.error('The key should start with "-----BEGIN" and end with "-----END".');
+      }
+      if (stderr.includes('Permission denied')) {
+        console.error('\nSSH authentication failed. Please verify:');
+        console.error('1. The SSH key is correct and matches the server');
+        console.error('2. The user has permission to access the server');
+        console.error('3. The key is not encrypted with a passphrase');
+      }
+    }
+    return false;
+  }
+}
+
 // Ensure remote directory exists
 function ensureRemoteDirectory() {
   try {
@@ -170,6 +229,14 @@ async function main() {
     console.error(`Directory ${DIST_DIR} does not exist`);
     process.exit(1);
   }
+  
+  // Test SSH connection first
+  console.log('Testing SSH connection...');
+  if (!testSSHConnection()) {
+    console.error('SSH connection test failed. Aborting deployment.');
+    process.exit(1);
+  }
+  console.log('SSH connection successful!\n');
   
   ensureRemoteDirectory();
   
