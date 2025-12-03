@@ -35,7 +35,7 @@ jobs:
 
       # Option 1: Deploy via SCP (only requires SSH, no rsync needed)
       - name: Clean remote directory
-        if: ${{ secrets.DEPLOY_HOST != '' }}
+        if: secrets.DEPLOY_HOST != ''
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.DEPLOY_HOST }}
@@ -52,7 +52,7 @@ jobs:
             fi
 
       - name: Deploy to server via SCP
-        if: ${{ secrets.DEPLOY_HOST != '' }}
+        if: secrets.DEPLOY_HOST != ''
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.DEPLOY_HOST }}
